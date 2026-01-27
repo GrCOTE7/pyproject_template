@@ -7,6 +7,20 @@
   }
 }
 
+cryptosgeeks.com {
+  import security_headers
+  handle {
+    reverse_proxy cryptogeeks_frontend:80
+  }
+}
+
+www.cryptosgeeks.com {
+  import security_headers
+  handle {
+    reverse_proxy cryptogeeks_frontend:80
+  }
+}
+
 cote7.com {
   import security_headers
   handle /admin* {
