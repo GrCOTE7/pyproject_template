@@ -1,0 +1,55 @@
+# docker compose -f docker-compose.dev.yml up --build -d
+# OU
+# docker compose -f docker-compose.dev.yml build --no-cache
+# docker compose -f docker-compose.dev.yml up -d
+# API → http://localhost:8000/docs
+# Frontend → http://localhost:8501
+
+# Pour débuguer: docker compose -f docker-compose.dev.yml build --no-cache --progress=plain
+
+services:
+  backend:
+    build: ./backend
+    container_name: fastapi_backend
+    ports:
+      - "${FASTAPI_PORT:-8000}:8000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+    networks:
+      - appnet
+
+  django:
+    build: ./backend/django
+    container_name: django_backend
+    ports:
+      - "${DJANGO_PORT:-8001}:8001"
+    env_file:
+      - ./backend/django/.env
+    volumes:
+      - ./backend/django:/app
+    networks:
+      - appnet
+
+  frontend:
+    build: ./frontend
+    container_name: react_frontend
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
+    environment:
+      - VITE_BACKEND_URL=http://backend:8000
+      - VITE_DJANGO_URL=http://django:8001
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+      - django
+    networks:
+      - appnet
+
+networks:
+  appnet:

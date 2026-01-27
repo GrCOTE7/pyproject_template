@@ -1,0 +1,52 @@
+# docker compose -f docker-compose.prod.yml up --build -d
+# API → http://localhost:8000/docs
+# Frontend → http://localhost:80
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: fastapi_backend
+    ports:
+      - "${FASTAPI_PORT:-8000}:8000"
+    env_file:
+      - ./backend/.env
+    restart: always
+    networks:
+      - appnet
+
+  django:
+    build:
+      context: ./backend/django
+      dockerfile: Dockerfile.prod
+    container_name: django_backend
+    ports:
+      - "${DJANGO_PORT:-8001}:8001"
+    env_file:
+      - ./backend/django/.env
+    restart: always
+    networks:
+      - appnet
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: react_frontend
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    environment:
+      - VITE_BACKEND_URL=${VITE_BACKEND_URL:-http://localhost:8000}
+      - VITE_DJANGO_URL=${VITE_DJANGO_URL:-http://localhost:8001}
+    depends_on:
+      - backend
+      - django
+    restart: always
+    networks:
+      - appnet
+
+networks:
+  appnet:

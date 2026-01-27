@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Env virtuel (un seul à la racine)
+.venv/
+
+# Node
+node_modules/
+dist/
+.cache/
+
+# IDE
+# .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.local
+
+# BE/Django - DB
+/backend/django/db.sqlite3
+
+# FE
+/frontend/playwright-report/index.html

@@ -1,0 +1,19 @@
+# Cache et environnements
+.venv/
+__pycache__/
+*.pyc
+
+# Modèles et données
+# *.h5
+# *.pkl
+# *.model
+# models/
+# data/
+
+# IDE et logs
+.vscode/
+*.log
+
+# Git et docs
+.git/
+.env
