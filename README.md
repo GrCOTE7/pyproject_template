@@ -85,6 +85,10 @@ OU (Prod):
 
 docker compose -f docker-compose.prod.yml up --build -d
 
+#### Déploiement VPS (prod)
+
+Voir le guide complet : [z_doc/VPS-DEPLOY.md](z_doc/VPS-DEPLOY.md)
+
 ---
 
 ## Architecture
