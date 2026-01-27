@@ -41,6 +41,8 @@ CORS_ALLOWED_ORIGINS = os.getenv(
 ).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_TRUSTED_ORIGINS = os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
+
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
