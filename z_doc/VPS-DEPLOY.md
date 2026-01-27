@@ -25,22 +25,24 @@ Créez les fichiers `.env` suivants sur le VPS :
 
 Exemple minimal recommandé :
 
-**.env (racine)**
+### .env (racine)
 
-```
+```bash
 ENV=prod
 VITE_AUTH_BASE_URL=https://votre-domaine.com
 ```
 
-**backend/.env**
-```
+### backend/.env
+
+```bash
 ENV=prod
 FASTAPI_PORT=8000
 FASTAPI_CORS_ORIGINS=https://votre-domaine.com
 ```
 
-**backend/django/.env**
-```
+### backend/django/.env
+
+```bash
 ENV=prod
 DJANGO_DEBUG=False
 DJANGO_ALLOWED_HOSTS=votre-domaine.com
@@ -57,6 +59,7 @@ docker compose -f docker-compose.prod.yml up -d --build
 ```
 
 Accès :
+
 - Frontend : `http://votre-domaine.com`
 - FastAPI (via Nginx interne) : `/api/…`
 - Django (via Nginx interne) : `/auth/…`
@@ -67,12 +70,16 @@ Le plus simple sur VPS est d’utiliser un proxy TLS sur l’hôte (Caddy ou Ngi
 
 - **Caddy** (exemple) :
   - Caddyfile :
-    ```
+
+    ```bash
     votre-domaine.com {
         reverse_proxy localhost:80
     }
     ```
+
   - Caddy gère automatiquement les certificats TLS.
+
+<!-- > Pour plusieurs domaines sur un même VPS, voir : [z_doc/VPS-MULTI-DOMAIN.md](z_doc/VPS-MULTI-DOMAIN.md) -->
 
 ## 6) Vérifications utiles
 
@@ -86,7 +93,3 @@ docker logs -f fastapi_backend
 # Logs Django
 docker logs -f django_backend
 ```
-
----
-
-Si vous voulez, je peux aussi ajouter la base de données (PostgreSQL) et Redis dans la stack prod.

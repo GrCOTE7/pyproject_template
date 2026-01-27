@@ -1,0 +1,49 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: template_backend
+    expose:
+      - "8000"
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+    networks:
+      - appnet
+
+  django:
+    build:
+      context: ./backend/django
+      dockerfile: Dockerfile.prod
+    container_name: template_django
+    expose:
+      - "8001"
+    env_file:
+      - ./backend/django/.env
+    restart: unless-stopped
+    networks:
+      - appnet
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: template_frontend
+    expose:
+      - "80"
+    env_file:
+      - ./.env
+    depends_on:
+      - backend
+      - django
+    restart: unless-stopped
+    networks:
+      - appnet
+      - proxy
+
+networks:
+  appnet:
+  proxy:
+    external: true
+    name: proxy

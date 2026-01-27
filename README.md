@@ -89,6 +89,10 @@ docker compose -f docker-compose.prod.yml up --build -d
 
 Voir le guide complet : [z_doc/VPS-DEPLOY.md](z_doc/VPS-DEPLOY.md)
 
+#### VPS multi‑domaines (Docker‑native)
+
+Voir le guide : [z_doc/VPS-MULTI-DOMAIN.md](z_doc/VPS-MULTI-DOMAIN.md)
+
 ---
 
 ## Architecture

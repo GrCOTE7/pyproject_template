@@ -1,0 +1,23 @@
+(security_headers) {
+  header {
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Referrer-Policy no-referrer-when-downgrade
+    Permissions-Policy "geolocation=()"
+  }
+}
+
+template.cote7.fr {
+  import security_headers
+  reverse_proxy template_frontend:80
+}
+
+cryptogeeks.com {
+  import security_headers
+  reverse_proxy cryptogeeks_frontend:80
+}
+
+www.cryptogeeks.com {
+  import security_headers
+  reverse_proxy cryptogeeks_frontend:80
+}
