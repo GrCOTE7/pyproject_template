@@ -2,7 +2,7 @@ function App() {
   return (
     <main className="page">
       <section className="card">
-        <p className="tag">CryptoGeeks.com</p>
+        <p className="text-2xl tag">CryptosGeeks.com</p>
         <h1>Site en construction...</h1>
         <p className="subtitle italic">
           Restez en alerte... Et revenez très bientôt !
