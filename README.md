@@ -300,23 +300,33 @@ python tests/test_hotreload.py
 
 12) ❌ **Base de données** (PostgreSQL/Redis) : persistance, sessions, cache
 
-13) ❌ **Observabilité** (traces, dashboards)
+13) Serveur d'emails
+    ❌ rDNS PTR cohérent (sg1.cote7.com)
+    ❌ A/AAAA + SPF + DKIM + DMARC
+    ❌ TLS (certificat valide), HELO correct
+    ❌ Surveillance des bounces/blacklists
+    ❌ Ouverture du port 25 (certains hébergeurs le bloquent)
+    ❌ Postfix
+    ❌ OpenDKIM
+    ❌ DMARC
 
-14) ❌ **Versioning API + doc enrichie**
+14) ❌ **Observabilité** (traces, dashboards)
 
-15) ❌ **Performance frontend**
+15) ❌ **Versioning API + doc enrichie**
+
+16) ❌ **Performance frontend**
     * Code splitting (lazy loading des composants)
     * Mise en cache des requêtes
     * Debounce sur les événements fréquents
     * Service Worker pour le mode offline
     * Possibilité d'évoluer vers le multilangues (front uniquement)
 
-16) ❌ **Authentification avancée**
+17) ❌ **Authentification avancée**
     * Sessions utilisateurs
     * OAuth2 (Google, GitHub)
     * CF. [Contrôle de Sécu](https://github.com/protectai/vulnhuntr)
 
-17) ❌ Vérifications & contrôles global
+18) ❌ Vérifications & contrôles global
     * Vérifier la récupération d’IP réelle derrière proxy (rate limiting par IP)
 
 ---
