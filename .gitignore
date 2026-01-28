@@ -39,5 +39,6 @@ Thumbs.db
 # FE
 /frontend/playwright-report/index.html
 
+# Remote server parameters
 /z_doc/VPS-MULTI-DOMAIN.md
 /z_doc/RUNBOOK.md

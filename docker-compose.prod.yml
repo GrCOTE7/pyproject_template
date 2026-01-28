@@ -4,6 +4,7 @@
 
 services:
   backend:
+    image: ${BACKEND_IMAGE:-ghcr.io/grcote7/pyproject_template-backend:latest}
     build:
       context: ./backend
       dockerfile: Dockerfile.prod
@@ -17,6 +18,7 @@ services:
       - appnet
 
   django:
+    image: ${DJANGO_IMAGE:-ghcr.io/grcote7/pyproject_template-django:latest}
     build:
       context: ./backend/django
       dockerfile: Dockerfile.prod
@@ -30,6 +32,7 @@ services:
       - appnet
 
   frontend:
+    image: ${FRONTEND_IMAGE:-ghcr.io/grcote7/pyproject_template-frontend:latest}
     build:
       context: ./frontend
       dockerfile: Dockerfile.prod

@@ -1,5 +1,7 @@
 # Pyproject Template
 
+[![CI](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml) | [![CD](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml) | [![GHCR](https://img.shields.io/badge/ghcr-ready-0A7DC5)](https://github.com/grcote7/pyproject_template/pkgs/container/pyproject_template-backend) | [![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/) | [![Node](https://img.shields.io/badge/node-20-brightgreen)](https://nodejs.org/) | [![Docker](https://img.shields.io/badge/docker-ready-2496ED)](https://www.docker.com/) | [![Pytest](https://img.shields.io/badge/pytest-tests-green)](https://docs.pytest.org/) | [![Vitest](https://img.shields.io/badge/vitest-tests-green)](https://vitest.dev/) | [![Docs](https://img.shields.io/badge/docs-z__doc-informational)](z_doc/)
+
 ## Application web professionnelle
 
 Basée sur :
@@ -292,7 +294,7 @@ python tests/test_hotreload.py
 
 8) ✅ **Tests unitaires/E2E** (pytest, Vitest, Playwright)
 
-9) ❌ **CI/CD** (lint, tests, build, push image, déploiement)
+9) ✅ **CI/CD** (lint, tests, build, push image, déploiement) → voir [z_doc/CI-CD.md](z_doc/CI-CD.md)
 
 10) ❌ **Logging structuré + metrics**
 
