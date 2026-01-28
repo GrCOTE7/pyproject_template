@@ -79,16 +79,19 @@ function App() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-50 text-slate-800 font-[Roboto]">
-      <div className="border min-w-123 max-w-4xl w-3/6 mx-auto p-8 text-center bg-white rounded-2xl shadow-sm">
-        <h1 className="text-4xl mx-8 font-bold mb-0 text-blue-600">
-          PyProject Frontend
-        </h1>
-        <h2>
-          <span className="text-xl italic m-2 text-blue-600">(ViteJS + React)</span>
-          -
-          <span className="text-xl ml-1">v1.0.0</span>
-        </h2>
+    <div className="flex items-center justify-center min-h-screen bg-slate-50 text-slate-800 font-[Roboto] shadow-sm">
+      <div className="border min-w-123 max-w-4xl w-3/6 mx-auto p-8 text-center bg-white rounded-2xl shadow-2xl">
+        <div className="border-b pb-4 mb-6">
+          <h1 className="text-4xl mx-8 font-bold mb-0 text-blue-600">
+            PyProject Frontend
+          </h1>
+          <h2>
+            <span className="text-xl italic m-2 text-blue-600">
+              (ViteJS + React)
+            </span>
+            -<span className="text-xl ml-1">v1.0.0</span>
+          </h2>
+        </div>
 
         {!isAuthenticated ? (
           <form
