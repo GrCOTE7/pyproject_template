@@ -231,8 +231,9 @@ function App() {
         </div>
         <hr className="my-4"></hr>
         <p className="text-sm text-slate-500 italic text-right">
-          isAuthenticated : <span className="font-mono">{JSON.stringify(isAuthenticated)}</span><br/>
-          isAdmin : <span className="font-mono">{JSON.stringify(isAdmin)}</span>
+          isAuthenticated: <span className="font-mono"><b>{JSON.stringify(isAuthenticated)}</b></span>
+          <br />
+          isAdmin: <span className="font-mono"><b>{JSON.stringify(isAdmin)}</b></span>
         </p>
       </div>
     </div>
