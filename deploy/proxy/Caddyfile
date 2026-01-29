@@ -33,7 +33,7 @@ cote7.com {
     reverse_proxy django_backend:8001
   }
   handle {
-    reverse_proxy cryptogeeks_frontend:80
+    reverse_proxy react_frontend:80
   }
 }
 
@@ -49,6 +49,6 @@ www.cote7.com {
     reverse_proxy django_backend:8001
   }
   handle {
-    reverse_proxy cryptogeeks_frontend:80
+    reverse_proxy react_frontend:80
   }
 }
