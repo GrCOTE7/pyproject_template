@@ -1,6 +1,6 @@
 from ..config import settings
 
-MSG = "Hello from FastAPI!"
+MSG = "123Hello from FastAPI!"
 
 
 def build_hello_response(user: dict) -> dict:
