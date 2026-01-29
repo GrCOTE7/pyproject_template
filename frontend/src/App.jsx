@@ -95,7 +95,7 @@ function App() {
             <span className="text-xl italic m-2 text-blue-600">
               (ViteJS + React)
             </span>
-            -<span className="text-xl ml-1">v1.0.1</span>
+            -<span className="text-xl ml-1">v1.0.0</span>
           </h2>
         </div>
 
