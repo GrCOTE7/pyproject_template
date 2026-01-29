@@ -148,6 +148,7 @@ jobs:
               -e DJANGO_USER_USERNAME \
               -e DJANGO_USER_PASSWORD \
               django_backend python manage.py shell -c "exec(open('scripts/seed_users.py').read())"
+            docker compose -f deploy/cryptogeeks/docker-compose.yml up -d
             docker compose -f deploy/proxy/docker-compose.yml down
             docker compose -f deploy/proxy/docker-compose.yml up -d
             docker image prune -f
