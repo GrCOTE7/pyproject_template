@@ -14,7 +14,7 @@ function NotFound() {
     <main className="flex items-center justify-center min-h-screen bg-slate-50 text-slate-800 font-[Roboto]">
       <section className="border max-w-2xl w-full mx-6 p-10 text-center bg-white rounded-2xl shadow-2xl">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
-          Erreur 404 123
+          Erreur 404
         </p>
         <h1 className="text-4xl font-bold text-blue-600 mt-2">
           Page introuvable
