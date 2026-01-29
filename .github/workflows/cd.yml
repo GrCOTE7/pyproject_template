@@ -127,7 +127,9 @@ jobs:
             cd ${{ secrets.VPS_PATH }}
             docker network inspect proxy >/dev/null 2>&1 || docker network create proxy
             git pull
-            docker compose -f docker-compose.prod.yml pull
+            if ! docker compose -f docker-compose.prod.yml pull; then
+              docker compose -f docker-compose.prod.yml build backend django frontend
+            fi
             docker compose -f docker-compose.prod.yml up -d
             if [ -f backend/django/.env ]; then
               set -a
