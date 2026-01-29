@@ -90,10 +90,23 @@ jobs:
             echo "Missing one or more VPS secrets (VPS_HOST, VPS_USER, VPS_SSH_KEY, VPS_PATH)."
             exit 1
           fi
-          echo "VPS_HOST set: ${#VPS_HOST} chars"
-          echo "VPS_USER set: ${#VPS_USER} chars"
+          echo "VPS_HOST set: ${#VPS_HOST} chars (${VPS_HOST})"
+          echo "VPS_USER set: ${#VPS_USER} chars (${VPS_USER})"
           echo "VPS_SSH_KEY set: ${#VPS_SSH_KEY} chars"
           echo "VPS_PATH set: ${#VPS_PATH} chars"
+          if ! printf '%s' "$VPS_SSH_KEY" | grep -q '^-----BEGIN '; then
+            echo "VPS_SSH_KEY does not start with a BEGIN header."
+            exit 1
+          fi
+          if ! printf '%s' "$VPS_SSH_KEY" | grep -q ' PRIVATE KEY-----$'; then
+            echo "VPS_SSH_KEY does not contain a PRIVATE KEY footer/header."
+            exit 1
+          fi
+          if printf '%s' "$VPS_SSH_KEY" | grep -q $'\r'; then
+            echo "VPS_SSH_KEY contains CRLF line endings. Convert to LF."
+            exit 1
+          fi
+          echo "VPS_SSH_KEY format check: OK"
 
       - name: Deploy on VPS
         if: ${{ env.VPS_HOST != '' && env.VPS_USER != '' && env.VPS_SSH_KEY != '' && env.VPS_PATH != '' }}
