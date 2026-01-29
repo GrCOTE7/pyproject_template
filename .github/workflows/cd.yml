@@ -123,7 +123,9 @@ jobs:
           passphrase: ${{ secrets.VPS_SSH_PASSPHRASE }}
           # debug: true
           script: |
+            set -euo pipefail
             cd ${{ secrets.VPS_PATH }}
+            docker network inspect proxy >/dev/null 2>&1 || docker network create proxy
             git pull
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d
