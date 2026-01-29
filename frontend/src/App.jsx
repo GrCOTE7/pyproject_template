@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HelloWorld from "./Hello";
 import { useBackendStatus } from "./context/BackendContext";
-import { authFetch, clearTokens, hasValidSession, login } from "./auth";
+import {
+  authFetch,
+  clearTokens,
+  hasValidSession,
+  login,
+  getTokens,
+} from "./auth";
 import { setDocumentTitle } from "./utils/documentTitle";
 
 function App() {
@@ -10,6 +16,7 @@ function App() {
   const [message, setMessage] = useState("Loading...");
   const { isConnected } = useBackendStatus();
   const [isAuthenticated, setIsAuthenticated] = useState(hasValidSession());
+  const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState("");
   const [loggedUsername, setLoggedUsername] = useState("");
   const [adminNote, setAdminNote] = useState("");
@@ -36,7 +43,26 @@ function App() {
   };
 
   useEffect(() => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated) {
+      setIsAdmin(false);
+      return;
+    }
+
+    // Décoder le token pour déterminer si admin
+    try {
+      const { accessToken } = getTokens();
+      if (accessToken) {
+        const payload = JSON.parse(atob(accessToken.split(".")[1]));
+        setIsAdmin(
+          !!payload?.is_superuser ||
+            (Array.isArray(payload?.roles) && payload.roles.includes("admin")),
+        );
+      } else {
+        setIsAdmin(false);
+      }
+    } catch {
+      setIsAdmin(false);
+    }
 
     authFetch("/api/admin/hello")
       .then(async (res) => {
@@ -192,7 +218,7 @@ function App() {
           >
             About
           </Link>
-          {isAuthenticated && (
+          {isAuthenticated && isAdmin && (
             <p className="mt-2">
               <Link
                 to="/teck"
@@ -203,6 +229,11 @@ function App() {
             </p>
           )}
         </div>
+        <hr className="my-4"></hr>
+        <p className="text-sm text-slate-500 italic text-right">
+          isAuthenticated : <span className="font-mono">{JSON.stringify(isAuthenticated)}</span><br/>
+          isAdmin : <span className="font-mono">{JSON.stringify(isAdmin)}</span>
+        </p>
       </div>
     </div>
   );
