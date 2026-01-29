@@ -188,10 +188,20 @@ function App() {
         <div className="mt-6">
           <Link
             to="/about"
-            className="text-blue-600 hover:text-blue-500 underline"
+            className="text-blue-600 hover:text-black underline"
           >
-            Aller à About
+            About
           </Link>
+          {isAuthenticated && (
+            <p className="mt-2">
+              <Link
+                to="/teck"
+                className="text-blue-700 hover:text-blue-800 underline"
+              >
+                Teck
+              </Link>
+            </p>
+          )}
         </div>
       </div>
     </div>
