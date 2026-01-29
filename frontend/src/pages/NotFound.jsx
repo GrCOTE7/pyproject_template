@@ -4,7 +4,8 @@ import { setDocumentTitle } from "../utils/documentTitle";
 
 function NotFound() {
   useEffect(() => {
-    setDocumentTitle("404");
+    const prefix = import.meta.env.DEV ? "L_PPT" : "PPT";
+    setDocumentTitle(`${prefix} | 404`);
   }, []);
 
   return (
