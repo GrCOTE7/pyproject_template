@@ -90,7 +90,7 @@ jobs:
             echo "Missing one or more VPS secrets (VPS_HOST, VPS_USER, VPS_SSH_KEY, VPS_PATH)."
             exit 1
           fi
-          echo "VPS_HOST set: ${#VPS_HOST} chars (${VPS_HOST})"
+          echo "VPS_HOST set: ${#VPS_HOST} chars (${secrets.VPS_HOST})"
           echo "VPS_USER set: ${#VPS_USER} chars (${VPS_USER})"
           echo "VPS_SSH_KEY set: ${#VPS_SSH_KEY} chars"
           echo "VPS_PATH set: ${#VPS_PATH} chars"
