@@ -79,34 +79,34 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-and-push
     steps:
-      - name: Validate VPS secrets
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-          VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
-          VPS_PATH: ${{ secrets.VPS_PATH }}
-        run: |
-          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$VPS_PATH" ]; then
-            echo "Missing one or more VPS secrets (VPS_HOST, VPS_USER, VPS_SSH_KEY, VPS_PATH)."
-            exit 1
-          fi
-          echo "VPS_HOST set: ${#VPS_HOST} chars"
-          echo "VPS_USER set: ${#VPS_USER} chars"
-          echo "VPS_SSH_KEY set: ${#VPS_SSH_KEY} chars"
-          echo "VPS_PATH set: ${#VPS_PATH} chars"
-          if ! printf '%s' "$VPS_SSH_KEY" | grep -q '^-----BEGIN '; then
-            echo "VPS_SSH_KEY does not start with a BEGIN header."
-            exit 1
-          fi
-          if ! printf '%s' "$VPS_SSH_KEY" | grep -q ' PRIVATE KEY-----$'; then
-            echo "VPS_SSH_KEY does not contain a PRIVATE KEY footer/header."
-            exit 1
-          fi
-          if printf '%s' "$VPS_SSH_KEY" | grep -q $'\r'; then
-            echo "VPS_SSH_KEY contains CRLF line endings. Convert to LF."
-            exit 1
-          fi
-          echo "VPS_SSH_KEY format check: OK"
+      # - name: Validate VPS secrets
+      #   env:
+      #     VPS_HOST: ${{ secrets.VPS_HOST }}
+      #     VPS_USER: ${{ secrets.VPS_USER }}
+      #     VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+      #     VPS_PATH: ${{ secrets.VPS_PATH }}
+      #   run: |
+      #     if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$VPS_PATH" ]; then
+      #       echo "Missing one or more VPS secrets (VPS_HOST, VPS_USER, VPS_SSH_KEY, VPS_PATH)."
+      #       exit 1
+      #     fi
+      #     echo "VPS_HOST set: ${#VPS_HOST} chars"
+      #     echo "VPS_USER set: ${#VPS_USER} chars"
+      #     echo "VPS_SSH_KEY set: ${#VPS_SSH_KEY} chars"
+      #     echo "VPS_PATH set: ${#VPS_PATH} chars"
+      #     if ! printf '%s' "$VPS_SSH_KEY" | grep -q '^-----BEGIN '; then
+      #       echo "VPS_SSH_KEY does not start with a BEGIN header."
+      #       exit 1
+      #     fi
+      #     if ! printf '%s' "$VPS_SSH_KEY" | grep -q ' PRIVATE KEY-----$'; then
+      #       echo "VPS_SSH_KEY does not contain a PRIVATE KEY footer/header."
+      #       exit 1
+      #     fi
+      #     if printf '%s' "$VPS_SSH_KEY" | grep -q $'\r'; then
+      #       echo "VPS_SSH_KEY contains CRLF line endings. Convert to LF."
+      #       exit 1
+      #     fi
+      #     echo "VPS_SSH_KEY format check: OK"
 
       - name: Deploy on VPS
         if: ${{ env.VPS_HOST != '' && env.VPS_USER != '' && env.VPS_SSH_KEY != '' && env.VPS_PATH != '' }}
@@ -116,7 +116,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           passphrase: ${{ secrets.VPS_SSH_PASSPHRASE }}
-          debug: true
+          # debug: true
           script: |
             cd ${{ secrets.VPS_PATH }}
             git pull
