@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import HelloWorld from "./Hello";
 import { useBackendStatus } from "./context/BackendContext";
 import { authFetch, clearTokens, hasValidSession, login } from "./auth";
+import { setDocumentTitle } from "./utils/documentTitle";
 
 function App() {
   // Payloads (contenu utile) de réponse de l'API backend
@@ -14,6 +16,10 @@ function App() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setDocumentTitle("Accueil");
+  }, []);
 
   const getLoginErrorMessage = (err) => {
     const raw = (err?.message || "").trim();
@@ -178,6 +184,15 @@ function App() {
             <HelloWorld />
           </div>
         ) : null}
+
+        <div className="mt-6">
+          <Link
+            to="/about"
+            className="text-blue-600 hover:text-blue-500 underline"
+          >
+            Aller à About
+          </Link>
+        </div>
       </div>
     </div>
   );
