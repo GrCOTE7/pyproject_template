@@ -119,6 +119,7 @@ jobs:
           debug: true
           script: |
             cd ${{ secrets.VPS_PATH }}
+            git pull
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d
             docker image prune -f
