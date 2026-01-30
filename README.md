@@ -107,7 +107,7 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 ./start
 ```
 
-**💡 Note importante :** Si des services tournent déjà, `start.bat` vous proposera de les arrêter automatiquement.
+**💡 Note importante :** Si des services tournent déjà, `start.bat` les arrête automatiquement.
 
 Attention: La 1ère fois :
 
