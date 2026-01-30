@@ -124,7 +124,6 @@ function App() {
             -<span className="text-xl ml-1">v1.0.2</span>
           </h2>
         </div>
-
         {!isAuthenticated ? (
           <form
             onSubmit={handleLogin}
@@ -204,13 +203,11 @@ function App() {
             </button>
           </>
         )}
-
         {isAuthenticated ? (
           <div className="text-lg">
             <HelloWorld />
           </div>
         ) : null}
-
         <div className="mt-6">
           <Link
             to="/about"
@@ -231,10 +228,47 @@ function App() {
         </div>
         <hr className="my-4"></hr>
         <p className="text-sm text-slate-500 italic text-right">
-          isAuthenticated: <span className="font-mono"><b>{JSON.stringify(isAuthenticated)}</b></span>
+          isAuthenticated:{" "}
+          <span className="font-mono">
+            <b>{JSON.stringify(isAuthenticated)}</b>
+          </span>
           <br />
-          isAdmin: <span className="font-mono"><b>{JSON.stringify(isAdmin)}</b></span>
+          isAdmin:{" "}
+          <span className="font-mono">
+            <b>{JSON.stringify(isAdmin)}</b>
+          </span>
         </p>
+        <hr className="my-4" />
+
+        <div className="mt-4 flex justify-center items-center">
+          <a
+            href="https://github.com/GrCOTE7/pyproject_template"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1"
+          >
+            <span> Dépôt GH public :</span>
+            <img
+              src="https://img.shields.io/github/v/release/grcote7/pyproject_template"
+              alt="GitHub release"
+              className="align-middle"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="inline w-4 h-4 ml-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 3h7m0 0v7m0-7L10 14m-7 7h7a2 2 0 002-2v-7"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   );

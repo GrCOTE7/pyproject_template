@@ -1,8 +1,32 @@
 # Pyproject Template
 
-[![Node](https://img.shields.io/badge/node-20-3C873A)](https://nodejs.org/) | [![Vitest](https://img.shields.io/badge/vitest-tests-22c55e)](https://vitest.dev/) | [![Python](https://img.shields.io/badge/python-3.11-3776AB)](https://www.python.org/) | [![Pytest](https://img.shields.io/badge/pytest-tests-22c55e)](https://docs.pytest.org/) | [![Docker](https://img.shields.io/badge/docker-ready-2496ED)](https://www.docker.com/) | [![GHCR](https://img.shields.io/badge/ghcr-ready-0EA5E9)](https://github.com/grcote7/pyproject_template/pkgs/container/pyproject_template-backend) | [![CI](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml) | [![CD](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml) | [![Docs](https://img.shields.io/badge/docs-z__doc-64748B)](z_doc/)
+![Nginx](https://img.shields.io/badge/Nginx-1.25-009639?logo=nginx)
+ &nbsp; ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js)
+ &nbsp; ![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript)
+ &nbsp; ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)
+ &nbsp; [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)](https://www.python.org)
+ &nbsp; [![PyPI](https://img.shields.io/pypi/v/fastapi.svg)](https://pypi.org/project/fastapi/)
+ &nbsp; ![Pytest](https://img.shields.io/badge/Pytest-8.0-22C55E?logo=pytest)
+ &nbsp; ![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688?logo=fastapi)
+ &nbsp; ![Django](https://img.shields.io/badge/Django-5.0.2-092E20?logo=django)
+ &nbsp; ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql)
+&nbsp; .
+ &nbsp; [![Node](https://img.shields.io/badge/node-20-3C873A)](https://nodejs.org/)
+ &nbsp; [![NPM](https://img.shields.io/npm/v/react.svg)](https://www.npmjs.com/package/react)
+ &nbsp; ![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)
+ &nbsp; ![Vitest](https://img.shields.io/badge/Vitest-1.2-22C55E?logo=vitest)
+ &nbsp; [![Vitest](https://img.shields.io/badge/vitest-tests-22c55e)](https://vitest.dev/)
+ &nbsp; ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss)
+ &nbsp; ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
+&nbsp; .
+ &nbsp; [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker)](https://www.docker.com)
+ &nbsp; [![GHCR](https://img.shields.io/badge/ghcr-ready-0EA5E9)](https://github.com/grcote7/pyproject_template/pkgs/container/pyproject_template-backend)
+ &nbsp; [![CI](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml)
+ &nbsp; [![CD](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml)
+&nbsp; .
+ &nbsp; [![Docs](https://img.shields.io/badge/docs-z__doc-64748B)](z_doc/)
 
-## Application web professionnelle
+## Objet : Application web professionnelle
 
 Basée sur :
 
@@ -13,6 +37,37 @@ Basée sur :
 L’objectif est d’avoir une UI moderne et réactive, une base back‑office robuste (auth, admin, RBAC) et des services performants pour les besoins critiques.
 
 Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les 2 cas, les hotreload + rafraichissement du navigateur (grâce à WS).
+
+## Sommaire *(Table Of Content)*
+
+<!-- TOC -->
+
+- [Pyproject Template](#pyproject-template)
+  - [Objet : Application web professionnelle](#objet--application-web-professionnelle)
+  - [Sommaire *(Table Of Content)*](#sommaire-table-of-content)
+  - [Processes Démarrage](#processes-démarrage)
+    - [Local](#local)
+    - [Arrêter les services](#arrêter-les-services)
+    - [Docker](#docker)
+      - [Lancer Docker-desktop + Containers](#lancer-docker-desktop--containers)
+      - [Déploiement VPS (prod)](#déploiement-vps-prod)
+      - [VPS multi‑domaines (Docker‑native)](#vps-multidomaines-dockernative)
+  - [Architecture](#architecture)
+    - [Structures](#structures)
+      - [FastAPI (services critiques)](#fastapi-services-critiques)
+      - [Django (core back‑office/auth)](#django-core-backofficeauth)
+      - [React (frontend)](#react-frontend)
+  - [Configuration (.env)](#configuration-env)
+    - [Première installation](#première-installation)
+    - [Variables essentielles](#variables-essentielles)
+    - [Générer une SECRET\_KEY sécurisée](#générer-une-secret_key-sécurisée)
+  - [Tests automatisés](#tests-automatisés)
+    - [Health Checks](#health-checks)
+    - [Hot-Reload Tests](#hot-reload-tests)
+  - [Roadmap (BP - Battle Plan - Fil directeur unique)](#roadmap-bp---battle-plan---fil-directeur-unique)
+  - [Notes](#notes)
+
+<!-- /TOC -->
 
 ## Processes Démarrage
 
@@ -274,6 +329,7 @@ python tests/test_hotreload.py
 ---
 
 ## Roadmap (BP - Battle Plan - Fil directeur unique)
+(Chronologique et graduel)
 
 1) ✅ **Sécurité & configuration (.env, CORS, secrets)**
     * Fichiers .env pour tous les services
@@ -319,6 +375,7 @@ python tests/test_hotreload.py
     ❌ DMARC
 
 14) ❌ **Observabilité** (traces, dashboards)
+    ❌ Page web monitorings
 
 15) ❌ **Versioning API + doc enrichie**
 
@@ -334,8 +391,9 @@ python tests/test_hotreload.py
     * OAuth2 (Google, GitHub)
     * CF. [Contrôle de Sécu](https://github.com/protectai/vulnhuntr)
 
-18) ❌ Vérifications & contrôles global
-    * Vérifier la récupération d’IP réelle derrière proxy (rate limiting par IP)
+18) Vérifications globales & diverses
+   ❌  Vérifier la récupération d’IP réelle derrière proxy (rate limiting par IP)
+   ❌ Protect branche main → fails tests => no P.R.
 
 ---
 
