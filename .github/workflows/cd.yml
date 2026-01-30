@@ -126,7 +126,8 @@ jobs:
             set -euo pipefail
             cd ${{ secrets.VPS_PATH }}
             docker network inspect proxy >/dev/null 2>&1 || docker network create proxy
-            git pull --ff-only
+            git fetch origin
+            git reset --hard origin/main
             if ! docker compose -f docker-compose.prod.yml pull; then
               docker compose -f docker-compose.prod.yml build backend django frontend
             fi
