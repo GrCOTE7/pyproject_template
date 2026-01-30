@@ -25,6 +25,7 @@
  &nbsp; [![CD](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml)
 &nbsp; .
  &nbsp; [![Docs](https://img.shields.io/badge/docs-z__doc-64748B)](z_doc/)
+ &nbsp; [![GitHub release](https://img.shields.io/github/v/release/grcote7/pyproject_template)](https://github.com/GrCOTE7/pyproject_template)
 
 ## Objet : Application web professionnelle
 
