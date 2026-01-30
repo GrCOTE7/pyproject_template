@@ -1,5 +1,17 @@
 # Pyproject Template
 
+## Objet : Application web professionnelle
+
+Basée sur :
+
+* React (frontend)
+* Django (core back‑office/auth)
+* FastAPI (services critiques)
+
+L’objectif est d’avoir une UI moderne et réactive, une base back‑office robuste (auth, admin, RBAC) et des services performants pour les besoins critiques.
+
+Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les 2 cas, les hotreload + rafraichissement du navigateur (grâce à WS).
+
 ## Backends (API & Admin) & Bases de données
 
 ![Nginx](https://img.shields.io/badge/Nginx-1.25-009639?logo=nginx)
@@ -48,32 +60,21 @@
 ---
 
 ### Documentation & Release
+
 [![Docs](https://img.shields.io/badge/docs-z__doc-64748B)](z_doc/)
 [![GitHub release](https://img.shields.io/github/v/release/grcote7/pyproject_template)](https://github.com/GrCOTE7/pyproject_template)
-
-## Objet : Application web professionnelle
-
-Basée sur :
-
-* React (frontend)
-* Django (core back‑office/auth)
-* FastAPI (services critiques)
-
-L’objectif est d’avoir une UI moderne et réactive, une base back‑office robuste (auth, admin, RBAC) et des services performants pour les besoins critiques.
-
-Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les 2 cas, les hotreload + rafraichissement du navigateur (grâce à WS).
 
 ## Sommaire *(Table Of Content)*
 
 <!-- TOC -->
 
 - [Pyproject Template](#pyproject-template)
+  - [Objet : Application web professionnelle](#objet--application-web-professionnelle)
   - [Backends (API \& Admin) \& Bases de données](#backends-api--admin--bases-de-données)
   - [Frontend](#frontend)
   - [Outils DevOps \& Tests](#outils-devops--tests)
   - [Conteneurisation Docker \& CI/CD (/GH)](#conteneurisation-docker--cicd-gh)
     - [Documentation \& Release](#documentation--release)
-  - [Objet : Application web professionnelle](#objet--application-web-professionnelle)
   - [Sommaire *(Table Of Content)*](#sommaire-table-of-content)
   - [Processes Démarrage](#processes-démarrage)
     - [Local](#local)
