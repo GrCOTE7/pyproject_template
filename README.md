@@ -12,7 +12,9 @@ L’objectif est d’avoir une UI moderne et réactive, une base back‑office r
 
 Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les 2 cas, les hotreload + rafraichissement du navigateur (grâce à WS).
 
-## Backends (API & Admin) & Bases de données
+## Technos
+
+### Backends (API & Admin) & Bases de données
 
 ![Nginx](https://img.shields.io/badge/Nginx-1.25-009639?logo=nginx)
 ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js)
@@ -28,7 +30,7 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 
 ---
 
-## Frontend
+### Frontend
 
 [![Node](https://img.shields.io/badge/node-20-3C873A)](https://nodejs.org/)
 [![NPM](https://img.shields.io/npm/v/react.svg)](https://www.npmjs.com/package/react)
@@ -40,7 +42,7 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 
 ---
 
-## Outils DevOps & Tests
+### Outils DevOps & Tests
 
 ![Pytest](https://img.shields.io/badge/Pytest-8.0-22C55E?logo=pytest)
 ![Vitest](https://img.shields.io/badge/Vitest-1.2-22C55E?logo=vitest)
@@ -48,7 +50,7 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 
 ---
 
-## Conteneurisation Docker & CI/CD (/GH)
+### Conteneurisation Docker & CI/CD (/GH)
 
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker)](https://www.docker.com)
 [![GHCR](https://img.shields.io/badge/ghcr-ready-0EA5E9)](https://github.com/grcote7/pyproject_template/pkgs/container/pyproject_template-backend)
@@ -70,10 +72,11 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 
 - [Pyproject Template](#pyproject-template)
   - [Objet : Application web professionnelle](#objet--application-web-professionnelle)
-  - [Backends (API \& Admin) \& Bases de données](#backends-api--admin--bases-de-données)
-  - [Frontend](#frontend)
-  - [Outils DevOps \& Tests](#outils-devops--tests)
-  - [Conteneurisation Docker \& CI/CD (/GH)](#conteneurisation-docker--cicd-gh)
+  - [Technos](#technos)
+    - [Backends (API \& Admin) \& Bases de données](#backends-api--admin--bases-de-données)
+    - [Frontend](#frontend)
+    - [Outils DevOps \& Tests](#outils-devops--tests)
+    - [Conteneurisation Docker \& CI/CD (/GH)](#conteneurisation-docker--cicd-gh)
     - [Documentation \& Release](#documentation--release)
   - [Sommaire *(Table Of Content)*](#sommaire-table-of-content)
   - [Processes Démarrage](#processes-démarrage)
@@ -98,6 +101,7 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
   - [Roadmap (BP - Battle Plan - Fil directeur unique)](#roadmap-bp---battle-plan---fil-directeur-unique)
   - [Notes](#notes)
 
+<!-- /TOC -->
 <!-- /TOC -->
 
 ## Processes Démarrage
