@@ -162,7 +162,7 @@ OU, 'à la main' :
 
 #### Lancer Docker-desktop + Containers
 
-Note: Avoir fait fontionné l'App en mode local au préalable
+Note: Avoir fait fonctionné l'App en mode local au préalable
 
 Dans racine (Dev):
 
@@ -422,8 +422,12 @@ python tests/test_hotreload.py
     * CF. [Contrôle de Sécu](https://github.com/protectai/vulnhuntr)
 
 18) Vérifications globales & diverses
+
    ❌  Vérifier la récupération d’IP réelle derrière proxy (rate limiting par IP)
+
    ❌ Protect branche main → fails tests => no P.R.
+
+   ❌ Adopter makefile pour gérer scripts starter, workflows (Test & CI/CD), etc...
 
 ---
 
