@@ -152,6 +152,20 @@ jobs:
             docker compose -f deploy/proxy/docker-compose.yml down
             docker compose -f deploy/proxy/docker-compose.yml up -d
             docker image prune -f
+            # Générer le screenshot de la page prod après déploiement
+            if command -v node >/dev/null 2>&1; then
+              cd frontend
+              if [ -f "scripts/screenshot-prod.js" ]; then
+                npm install --omit=dev --no-audit --no-fund puppeteer
+                node scripts/screenshot-prod.js
+                echo "Screenshot généré."
+              else
+                echo "Script screenshot-prod.js introuvable."
+              fi
+              cd ..
+            else
+              echo "Node.js n'est pas installé sur le VPS, screenshot non généré."
+            fi
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
