@@ -75,12 +75,19 @@ echo [4/4] Lancement du Frontend (Vite)...
 :: /min lance la fenetre reduite dans la barre des taches
 start "Frontend - Vite" /min cmd /c "cd frontend & npm run dev"
 
+REM Démarre aussi Cryptogeeks (CGC) en local
+echo.
+@REM echo [4b/4] Lancement de Cryptogeeks (Vite, port 5174)...
+:: /min lance la fenetre reduite dans la barre des taches
+start "Cryptogeeks - Vite" /min cmd /c "cd deploy\cryptogeeks\frontend & npm run dev -- --port 5174"
+
 echo.
     echo ================================================
     echo   Services lancés en ARRIÈRE-PLAN (réduits).
     echo   - Backend FastAPI: http://localhost:8000/api/hello
     echo   - Backend Django: http://localhost:8001/admin/
-    echo   - Frontend: http://localhost:5173
+    echo   - Frontend PPT: http://localhost:5173
+    echo   - (Option) Frontend CGC: http://localhost:5174
     echo ================================================
 
 echo.

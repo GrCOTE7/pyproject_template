@@ -132,7 +132,8 @@ Arrête proprement tous les services (FastAPI, Django, React).
 
 * [API](http://localhost:8000/docs)
 * [BE](http://localhost:8001/admin) → Login: admin / admin
-* [FE](http://localhost:5173)
+* [FE PPT](http://localhost:5173)
+* Option (Commenté par défaut) [FE CGC](http://localhost:517)
 
 **Note :** Un seul environnement virtuel à la racine (`.venv/`) contient toutes les dépendances Python (FastAPI + Django).
 
