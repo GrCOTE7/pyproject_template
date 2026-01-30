@@ -1,31 +1,55 @@
 # Pyproject Template
 
+## Backends (API & Admin) & Bases de données
+
 ![Nginx](https://img.shields.io/badge/Nginx-1.25-009639?logo=nginx)
- &nbsp; ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js)
- &nbsp; ![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript)
- &nbsp; ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)
- &nbsp; [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)](https://www.python.org)
- &nbsp; [![PyPI](https://img.shields.io/pypi/v/fastapi.svg)](https://pypi.org/project/fastapi/)
- &nbsp; ![Pytest](https://img.shields.io/badge/Pytest-8.0-22C55E?logo=pytest)
- &nbsp; ![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688?logo=fastapi)
- &nbsp; ![Django](https://img.shields.io/badge/Django-5.0.2-092E20?logo=django)
- &nbsp; ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql)
-&nbsp; .
- &nbsp; [![Node](https://img.shields.io/badge/node-20-3C873A)](https://nodejs.org/)
- &nbsp; [![NPM](https://img.shields.io/npm/v/react.svg)](https://www.npmjs.com/package/react)
- &nbsp; ![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)
- &nbsp; ![Vitest](https://img.shields.io/badge/Vitest-1.2-22C55E?logo=vitest)
- &nbsp; [![Vitest](https://img.shields.io/badge/vitest-tests-22c55e)](https://vitest.dev/)
- &nbsp; ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss)
- &nbsp; ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
-&nbsp; .
- &nbsp; [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker)](https://www.docker.com)
- &nbsp; [![GHCR](https://img.shields.io/badge/ghcr-ready-0EA5E9)](https://github.com/grcote7/pyproject_template/pkgs/container/pyproject_template-backend)
- &nbsp; [![CI](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml)
- &nbsp; [![CD](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml)
-&nbsp; .
- &nbsp; [![Docs](https://img.shields.io/badge/docs-z__doc-64748B)](z_doc/)
- &nbsp; [![GitHub release](https://img.shields.io/github/v/release/grcote7/pyproject_template)](https://github.com/GrCOTE7/pyproject_template)
+![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)](https://www.python.org)
+[![PyPI](https://img.shields.io/pypi/v/fastapi.svg)](https://pypi.org/project/fastapi/)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688?logo=fastapi)
+![Django](https://img.shields.io/badge/Django-5.0.2-092E20?logo=django)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql)
+
+---
+
+---
+
+## Frontend
+
+[![Node](https://img.shields.io/badge/node-20-3C873A)](https://nodejs.org/)
+[![NPM](https://img.shields.io/npm/v/react.svg)](https://www.npmjs.com/package/react)
+![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss)
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
+
+---
+
+---
+
+## Outils DevOps & Tests
+
+![Pytest](https://img.shields.io/badge/Pytest-8.0-22C55E?logo=pytest)
+![Vitest](https://img.shields.io/badge/Vitest-1.2-22C55E?logo=vitest)
+[![Vitest](https://img.shields.io/badge/vitest-tests-22c55e)](https://vitest.dev/)
+
+---
+
+## Conteneurisation Docker & CI/CD (/GH)
+
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker)](https://www.docker.com)
+[![GHCR](https://img.shields.io/badge/ghcr-ready-0EA5E9)](https://github.com/grcote7/pyproject_template/pkgs/container/pyproject_template-backend)
+[![CI](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/ci.yml)
+[![CD](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml/badge.svg)](https://github.com/grcote7/pyproject_template/actions/workflows/cd.yml)
+
+---
+
+---
+
+### Documentation & Release
+[![Docs](https://img.shields.io/badge/docs-z__doc-64748B)](z_doc/)
+[![GitHub release](https://img.shields.io/github/v/release/grcote7/pyproject_template)](https://github.com/GrCOTE7/pyproject_template)
 
 ## Objet : Application web professionnelle
 
@@ -44,6 +68,11 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 <!-- TOC -->
 
 - [Pyproject Template](#pyproject-template)
+  - [Backends (API \& Admin) \& Bases de données](#backends-api--admin--bases-de-données)
+  - [Frontend](#frontend)
+  - [Outils DevOps \& Tests](#outils-devops--tests)
+  - [Conteneurisation Docker \& CI/CD (/GH)](#conteneurisation-docker--cicd-gh)
+    - [Documentation \& Release](#documentation--release)
   - [Objet : Application web professionnelle](#objet--application-web-professionnelle)
   - [Sommaire *(Table Of Content)*](#sommaire-table-of-content)
   - [Processes Démarrage](#processes-démarrage)
