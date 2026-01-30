@@ -379,6 +379,7 @@ python tests/test_hotreload.py
     * Tests de hot-reload
     * Intégration dans start.bat
     * Scripts dédiés (test-health.bat, test-hotreload.bat)
+    ❌ Page Web /teck monitoring
 
 3) ✅ **Reverse proxy + routing** (Vite proxy en dev, Nginx en prod)
 
