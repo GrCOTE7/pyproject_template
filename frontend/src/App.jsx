@@ -215,15 +215,27 @@ function App() {
           >
             About
           </Link>
+          {' | '}
           {isAuthenticated && isAdmin && (
-            <p className="mt-2">
+            <span className="mt-2">
               <Link
                 to="/teck"
                 className="text-blue-700 hover:text-blue-800 underline"
               >
                 Teck
               </Link>
-            </p>
+            </span>
+          )}
+          {' | '}
+          {isAuthenticated && isAdmin && (
+            <span className="mt-2">
+              <Link
+                to="/monitoring"
+                className="text-blue-700 hover:text-blue-800 underline"
+              >
+                Monitoring
+              </Link>
+            </span>
           )}
         </div>
         <hr className="my-4"></hr>

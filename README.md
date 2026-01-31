@@ -434,6 +434,8 @@ python tests/test_hotreload.py
 
    ❌ Protect branche main → fails tests => no P.R.
 
+   ❌ Intégrer auto-changelog & auto versions by commi_ts (Projet PyMox / GH)
+
    ❌ Adopter makefile pour gérer scripts starter, workflows (Test & CI/CD), etc...
 
 ---
