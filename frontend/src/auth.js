@@ -1,3 +1,21 @@
+// Indique si l'on est en local (localhost ou 127.0.0.1)
+export const isLocalhost =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1";
+// Vérifie si l'utilisateur courant est admin (superuser ou rôle admin)
+export function isAdminUser() {
+  const { accessToken } = getTokens();
+  if (!accessToken) return false;
+  try {
+    const payload = JSON.parse(atob(accessToken.split(".")[1]));
+    return (
+      !!payload?.is_superuser ||
+      (Array.isArray(payload?.roles) && payload.roles.includes("admin"))
+    );
+  } catch {
+    return false;
+  }
+}
 const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";
 

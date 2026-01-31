@@ -228,9 +228,7 @@ function App() {
             </span>
           )}
 
-          {isAuthenticated &&
-            isAdmin &&
-            (window.location.hostname === "localhost" ||
+          {(window.location.hostname === "localhost" ||
               window.location.hostname === "127.0.0.1") && (
               <span className="mt-2">
                 {" | "}
