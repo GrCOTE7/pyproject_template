@@ -379,7 +379,6 @@ python tests/test_hotreload.py
     * Tests de hot-reload
     * Intégration dans start.bat
     * Scripts dédiés (test-health.bat, test-hotreload.bat)
-    ❌ Page Web /teck monitoring
 
 3) ✅ **Reverse proxy + routing** (Vite proxy en dev, Nginx en prod)
 
@@ -395,13 +394,8 @@ python tests/test_hotreload.py
 
 9) ✅ **CI/CD** (lint, tests, build, push image, déploiement) → voir [z_doc/CI-CD.md](z_doc/CI-CD.md)
 
-10) ❌ **Logging structuré + metrics**
+10) Serveur d'emails
 
-11) ❌ **Documentation API enrichie** (descriptions, exemples, schémas WS)
-
-12) ❌ **Base de données** (PostgreSQL/Redis) : persistance, sessions, cache
-
-13) Serveur d'emails
     ❌ rDNS PTR cohérent (sg1.cote7.com)
     ❌ A/AAAA + SPF + DKIM + DMARC
     ❌ TLS (certificat valide), HELO correct
@@ -411,12 +405,19 @@ python tests/test_hotreload.py
     ❌ OpenDKIM
     ❌ DMARC
 
-14) ❌ **Observabilité** (traces, dashboards)
+11) ❌ **Base de données** (PostgreSQL/Redis) : persistance, sessions, cache
+
+12) ❌ **Logging structuré + metrics**
+
+13) ❌ **Observabilité** (traces, dashboards)
     ❌ Page web monitorings
+
+14) ❌ **Documentation API enrichie** (descriptions, exemples, schémas WS)
 
 15) ❌ **Versioning API + doc enrichie**
 
 16) ❌ **Performance frontend**
+
     * Code splitting (lazy loading des composants)
     * Mise en cache des requêtes
     * Debounce sur les événements fréquents
@@ -424,6 +425,7 @@ python tests/test_hotreload.py
     * Possibilité d'évoluer vers le multilangues (front uniquement)
 
 17) ❌ **Authentification avancée**
+
     * Sessions utilisateurs
     * OAuth2 (Google, GitHub)
     * CF. [Contrôle de Sécu](https://github.com/protectai/vulnhuntr)
@@ -434,7 +436,7 @@ python tests/test_hotreload.py
 
    ❌ Écrire page z_docs/VSC_Tips ou dans PyMox ? (Extension ToDo, avec settings pour comptage et coloration + raccourcis utiles -❌ ✅ ☢️ 🎯 ↗️ )
 
-   ❌ Finir page monitoring (À prori utilisable qu'en local, et affichant les miniatures des 4 URLs clés, observant juste à l'appel, de la réponse HTTP par API...)
+   ❌ Page Web /teck monitoring : Finir page monitoring (À prori utilisable qu'en local, et affichant les miniatures des 4 URLs clés, observant juste à l'appel, de la réponse HTTP par API...)
 
    ❌ Intégrer auto-changelog & auto versions by commi_ts (Projet PyMox / GH)
 
