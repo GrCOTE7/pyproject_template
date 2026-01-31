@@ -215,9 +215,10 @@ function App() {
           >
             About
           </Link>
-          {' | '}
+
           {isAuthenticated && isAdmin && (
             <span className="mt-2">
+              {" | "}
               <Link
                 to="/teck"
                 className="text-blue-700 hover:text-blue-800 underline"
@@ -226,17 +227,21 @@ function App() {
               </Link>
             </span>
           )}
-          {' | '}
-          {isAuthenticated && isAdmin && (
-            <span className="mt-2">
-              <Link
-                to="/monitoring"
-                className="text-blue-700 hover:text-blue-800 underline"
-              >
-                Monitoring
-              </Link>
-            </span>
-          )}
+
+          {isAuthenticated &&
+            isAdmin &&
+            (window.location.hostname === "localhost" ||
+              window.location.hostname === "127.0.0.1") && (
+              <span className="mt-2">
+                {" | "}
+                <Link
+                  to="/monitoring"
+                  className="text-blue-700 hover:text-blue-800 underline"
+                >
+                  Monitoring
+                </Link>
+              </span>
+            )}
         </div>
         <hr className="my-4"></hr>
         <p className="text-sm text-slate-500 italic text-right">
