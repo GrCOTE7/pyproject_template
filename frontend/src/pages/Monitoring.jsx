@@ -14,7 +14,11 @@ const Monitoring = () => {
           Cette page n'est accessible qu'en local.
           <br />
           Redirection automatique dans{" "}
-          <Countdown seconds={7} onEnd={() => navigate("/")} /> secondes...
+          <Countdown
+            seconds={7}
+            onEnd={() => navigate("/")}
+            render={(count) => `${count} seconde${count === 1 ? "" : "s"}...`}
+          />
         </p>
         <Link
           to="/"

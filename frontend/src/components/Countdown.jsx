@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
  * @param {number} seconds - Nombre de secondes du décompte
  * @param {function} onEnd - Callback appelé à la fin
  */
-export default function Countdown({ seconds, onEnd }) {
+export default function Countdown({ seconds, onEnd, render }) {
   const [count, setCount] = useState(seconds);
   useEffect(() => {
     if (count <= 0) {
@@ -15,5 +15,8 @@ export default function Countdown({ seconds, onEnd }) {
     const timer = setTimeout(() => setCount((c) => c - 1), 1000);
     return () => clearTimeout(timer);
   }, [count, onEnd]);
+  if (typeof render === "function") {
+    return <>{render(count)}</>;
+  }
   return <span>{count}</span>;
 }
