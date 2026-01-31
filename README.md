@@ -99,7 +99,6 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
     - [Health Checks](#health-checks)
     - [Hot-Reload Tests](#hot-reload-tests)
   - [Roadmap (BP - Battle Plan - Fil directeur unique)](#roadmap-bp---battle-plan---fil-directeur-unique)
-  - [❌ Protect branche main → fails tests =\> no P.R.](#-protect-branche-main--fails-tests--no-pr)
   - [Notes](#notes)
 
 <!-- /TOC -->
@@ -433,7 +432,7 @@ python tests/test_hotreload.py
 
    ❌  Vérifier la récupération d’IP réelle derrière proxy (rate limiting par IP)
 
-   ❌ Écrire page z_docs/VSC_Tips (Extension ToDo, avec settings pour comptage et coloration + raccourcis utiles -❌ ✅ ☢️ 🎯 ↗️ )
+   ❌ Écrire page z_docs/VSC_Tips ou dans PyMox ? (Extension ToDo, avec settings pour comptage et coloration + raccourcis utiles -❌ ✅ ☢️ 🎯 ↗️ )
 
    ❌ Finir page monitoring (À prori utilisable qu'en local, et affichant les miniatures des 4 URLs clés, observant juste à l'appel, de la réponse HTTP par API...)
 
@@ -442,6 +441,7 @@ python tests/test_hotreload.py
    ❌ Adopter makefile pour gérer scripts starter, workflows (Test & CI/CD), etc...
 
    ❌ Protect branche main → fails tests => no P.R.
+
 ---
 
 ## Notes
