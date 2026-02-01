@@ -365,6 +365,7 @@ python tests/test_hotreload.py
 ---
 
 ## Roadmap (BP - Battle Plan - Fil directeur unique)
+
 (Chronologique et graduel)
 
 1) ✅ **Sécurité & configuration (.env, CORS, secrets)**
@@ -396,15 +397,30 @@ python tests/test_hotreload.py
 
 10) Serveur d'emails
 
-    ❌ rDNS PTR cohérent (sg1.cote7.com)
-    ❌ A/AAAA + SPF + DKIM + DMARC
-    ❌ TLS (certificat valide), HELO correct
-    ❌ Surveillance des bounces/blacklists
-    ❌ Ouverture du port 25 (certains hébergeurs le bloquent)
-    ❌ Postfix
-    ❌ OpenDKIM
-    ❌ DMARC
-    ❌ Créer unit test // emails (dev et prod)
+    * Send a simple email test :
+        * Local
+        * Dev
+        * Prod
+
+    * Config en + en prod :
+
+        ❌ rDNS PTR cohérent (sg1.cote7.com)
+
+        ❌ A/AAAA + SPF + DKIM + DMARC
+
+        ❌ TLS (certificat valide), HELO correct
+
+        ❌ Surveillance des bounces/blacklists
+
+        ❌ Ouverture du port 25 (certains hébergeurs le bloquent)
+
+        ❌ Postfix
+
+        ❌ OpenDKIM
+
+        ❌ DMARC
+
+    * ❌ Créer unit test // emailing (local, dev et prod)
 
 11) ❌ **Base de données** (PostgreSQL/Redis) : persistance, sessions, cache
 
