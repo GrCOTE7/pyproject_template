@@ -404,6 +404,7 @@ python tests/test_hotreload.py
     ❌ Postfix
     ❌ OpenDKIM
     ❌ DMARC
+    ❌ Créer unit test // emails (dev et prod)
 
 11) ❌ **Base de données** (PostgreSQL/Redis) : persistance, sessions, cache
 

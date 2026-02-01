@@ -19,6 +19,9 @@ services:
       - ./backend:/app
     networks:
       - appnet
+    environment:
+      - SMTP_HOST=${SMTP_HOST:-maildev}
+      - SMTP_PORT=${SMTP_PORT:-1025}
 
   django:
     build: ./backend/django
@@ -48,6 +51,12 @@ services:
     depends_on:
       - backend
       - django
+  maildev:
+    image: maildev/maildev
+    container_name: maildev
+    ports:
+      - "1080:1080" # Web UI
+      - "1025:1025" # SMTP
     networks:
       - appnet
 

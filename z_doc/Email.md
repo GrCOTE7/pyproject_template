@@ -40,13 +40,51 @@
 Invoke-WebRequest -Uri "http://localhost:8000/api/test-email?to=test@local.test" -Method POST
 ```
 
-* Vérifier l’email
+## Docker (dev)
+
+✅ Un service Maildev est inclus dans docker-compose.dev.yml (SMTP pour dev, interface web pour visualiser les mails).
+
+* Les variables SMTP sont dans backend/.env et .env.example :
+
+```bash
+  * SMTP_HOST=maildev
+  * SMTP_PORT=1025
+  * EMAIL_FROM=noreply@local.test
+```
+
+* Pas besoin d'identifiants ni de TLS avec Maildev.
+
+* Lancer l'environnement Docker dev :
+
+```bash
+docker compose -f docker-compose.dev.yml up -d --build
+```
+
+* Envoyer une requête POST sur :
+
+```bash
+/api/test-email?to=ton@email.test
+```
+
+* Exemple PowerShell :
+
+```bash
+Invoke-WebRequest -Uri "http://localhost:8000/api/test-email?to=test@local.test" -Method POST
+```
+
+✅ Résumé
+
+En dev, l’endpoint /api/test-email est public (pas besoin de token).
+En prod, il est protégé par authentification admin/system.
+
+Local
 
 ```bash
 http://localhost:8025
 ```
 
-✅ Résumé
+Docker (dev)
 
-En dev/local, l’endpoint /api/test-email est public (pas besoin de token).
-En prod, il sera protégé par authentification admin.
+```bash
+http://localhost:1080
+```
