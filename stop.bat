@@ -19,6 +19,7 @@ echo [*] Fermeture des consoles des serveurs...
 taskkill /F /FI "WINDOWTITLE eq Backend - FastAPI*" 2>nul
 taskkill /F /FI "WINDOWTITLE eq Backend - Django*" 2>nul
 taskkill /F /FI "WINDOWTITLE eq Frontend - Vite*" 2>nul
+@REM //❌ stop du CGC
 
 echo.
 echo ===================================================
@@ -26,3 +27,4 @@ echo   Tous les services ont été arrêtés
 echo ===================================================
 echo.
 @REM pause
+

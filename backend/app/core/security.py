@@ -6,7 +6,14 @@ from ..config import settings
 
 
 async def jwt_middleware(request: Request, call_next):
+
     path = request.url.path
+
+    # En dev/local, ne pas protéger l'endpoint de test email
+    from ..config import settings
+
+    if settings.is_dev and path.startswith("/api/test-email"):
+        return await call_next(request)
 
     if not path.startswith("/api") or path.startswith("/api/health"):
         return await call_next(request)
