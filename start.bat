@@ -63,6 +63,10 @@ goto start_services
 echo.
 echo [2/4] Lancement du Backend (FastAPI)...
 :: /min lance la fenetre reduite dans la barre des taches
+echo.
+echo [MailHog] Lancement de MailHog (port 8025)...
+start "MailHog" /min cmd /c "cd z_doc & MailHog_windows_amd64.exe"
+echo.
 start "Backend - FastAPI" /min cmd /c "call .venv\Scripts\activate & cd backend & uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
 
 echo.
