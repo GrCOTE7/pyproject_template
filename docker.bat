@@ -10,6 +10,11 @@ docker.exe compose -f docker-compose.dev.yml up --build -d
 set EXITCODE=%ERRORLEVEL%
 popd
 
+REM Démarre le serveur Maildev
+echo [*] Démarrage du serveur Maildev (port 1080/1025)...
+docker.exe compose -f docker-compose.dev.yml up -d maildev
+set EXITCODE_MAILDEV=%ERRORLEVEL%
+
 REM Démarre aussi Cryptogeeks (CGC) en local
 pushd "%~dp0deploy\cryptogeeks"
 docker.exe compose -f docker-compose.dev.yml up --build -d

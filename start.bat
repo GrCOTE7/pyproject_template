@@ -64,8 +64,8 @@ echo.
 echo [2/4] Lancement du Backend (FastAPI)...
 :: /min lance la fenetre reduite dans la barre des taches
 echo.
-echo [MailHog] Lancement de MailHog (port 8025)...
-start "MailHog" /min cmd /c "cd z_doc & MailHog_windows_amd64.exe"
+echo [MailHog] Lancement de MailHog (port 1080)...
+start "MailHog" /min cmd /c "cd z_doc & MailHog_windows_amd64.exe -ui-bind-addr 0.0.0.0:1080 -api-bind-addr 0.0.0.0:1081"
 echo.
 start "Backend - FastAPI" /min cmd /c "call .venv\Scripts\activate & cd backend & uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
 
@@ -88,6 +88,7 @@ start "Cryptogeeks - Vite" /min cmd /c "cd deploy\cryptogeeks\frontend & npm run
 echo.
     echo ================================================
     echo   Services lancés en ARRIÈRE-PLAN (réduits).
+    echo   - Serveur email: http://localhost:1025
     echo   - Backend FastAPI: http://localhost:8000/api/hello
     echo   - Backend Django: http://localhost:8001/admin/
     echo   - Frontend PPT: http://localhost:5173

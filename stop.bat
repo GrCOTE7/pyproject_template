@@ -19,13 +19,14 @@ echo [*] Fermeture des consoles des serveurs...
 taskkill /F /FI "WINDOWTITLE eq Backend - FastAPI*" 2>nul
 taskkill /F /FI "WINDOWTITLE eq Backend - Django*" 2>nul
 taskkill /F /FI "WINDOWTITLE eq Frontend - Vite*" 2>nul
+
 echo [*] Arrêt de Cryptogeeks (port 5174)...
 for /f "tokens=5" %%a in ('netstat -aon ^| find ":5174" ^| find "LISTENING"') do taskkill /F /T /PID %%a 2>nul
+taskkill /F /FI "WINDOWTITLE eq Cryptogeeks - Vite*" 2>nul
 
 echo [*] Arrêt de MailHog (port 8025)...
 for /f "tokens=5" %%a in ('netstat -aon ^| find ":8025" ^| find "LISTENING"') do taskkill /F /T /PID %%a 2>nul
 
-taskkill /F /FI "WINDOWTITLE eq Cryptogeeks - Vite*" 2>nul
 taskkill /F /FI "WINDOWTITLE eq MailHog*" 2>nul
 
 echo.
