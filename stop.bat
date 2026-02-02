@@ -25,7 +25,11 @@ for /f "tokens=5" %%a in ('netstat -aon ^| find ":5174" ^| find "LISTENING"') do
 taskkill /F /FI "WINDOWTITLE eq Cryptogeeks - Vite*" 2>nul
 
 echo [*] Arrêt de MailHog (port 8025)...
-for /f "tokens=5" %%a in ('netstat -aon ^| find ":8025" ^| find "LISTENING"') do taskkill /F /T /PID %%a 2>nul
+
+echo [*] Arrêt de MailHog (port 1080)...
+for /f "tokens=5" %%a in ('netstat -aon ^| find ":1080" ^| find "LISTENING"') do taskkill /F /T /PID %%a 2>nul
+echo [*] Arrêt de MailHog (API port 1081)...
+for /f "tokens=5" %%a in ('netstat -aon ^| find ":1081" ^| find "LISTENING"') do taskkill /F /T /PID %%a 2>nul
 
 taskkill /F /FI "WINDOWTITLE eq MailHog*" 2>nul
 
