@@ -81,6 +81,4 @@ En prod, il est protégé par authentification admin/system.
 
 Visualisation des emails (MailHog et/ou Maildev)
 
-```bash
-http://localhost:1080
-```
+[http://localhost:1080](http://localhost:1080)

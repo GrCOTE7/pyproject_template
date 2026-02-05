@@ -8,7 +8,6 @@
 # Pour débuguer: docker compose -f docker-compose.dev.yml build --no-cache --progress=plain
 
 # Commande POWERSHELL pour lister les utilisateurs :
-# Commande POWERSHELL pour lister les utilisateurs :
 # docker exec -it django_backend python manage.py shell -c "from django.contrib.auth import get_user_model; print([u.username for u in get_user_model().objects.all()])"
 
 # Avec leurs droits :
