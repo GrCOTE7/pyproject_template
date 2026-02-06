@@ -11,19 +11,20 @@
 #     except Exception as e:
 #         print(f"Erreur lors de l'envoi de l'email : {e}")
 
+import os
 import smtplib
 from email.mime.text import MIMEText
 
-# Configuration MailHog
-smtp_server = "localhost"
-smtp_port = 1025
-
-sender = "test@example.com"
-receiver = "destinataire@example.com"
+# Lecture de la configuration depuis une variable d'environnement pour
+# fonctionner à la fois sur l'hôte (localhost) et dans le réseau Docker
+smtp_server = os.getenv("SMTP_HOST", "localhost")
+smtp_port = int(os.getenv("SMTP_PORT", "1025"))
+sender = os.getenv("TEST_EMAIL_SENDER", "test@example.com")
+receiver = os.getenv("TEST_EMAIL_RECEIVER", "destinataire@example.com")
 
 # Message
-msg = MIMEText("Ceci est un email de test envoyé via MailHog.")
-msg["Subject"] = "Test MailHog - Directement depuis un script Python"
+msg = MIMEText("Ceci est un email de test envoyé via le serveur SMTP configuré.")
+msg["Subject"] = "Test SMTP - Directement depuis un script Python"
 msg["From"] = sender
 msg["To"] = receiver
 
@@ -31,4 +32,4 @@ msg["To"] = receiver
 with smtplib.SMTP(smtp_server, smtp_port) as server:
     server.send_message(msg)
 
-print("Email envoyé (vérifie MailHog) !")
+print(f"Email envoyé via {smtp_server}:{smtp_port} !")

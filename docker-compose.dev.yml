@@ -26,7 +26,7 @@ services:
     networks:
       - appnet
     environment:
-      - SMTP_HOST=${SMTP_HOST:-maildev}
+      - SMTP_HOST=${SMTP_HOST:-mailpit}
       - SMTP_PORT=${SMTP_PORT:-1025}
 
   django:
@@ -57,18 +57,17 @@ services:
     depends_on:
       - backend
       - django
-  maildev:
-    image: maildev/maildev
-    container_name: maildev
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
     ports:
-      - "1080:1080" # Web UI
+      - "8025:8025" # Web UI
       - "1025:1025" # SMTP
     networks:
       - appnet
 
 networks:
   appnet:
-
 # Relance du cntnr front :
 # docker compose -f docker-compose.dev.yml build frontend --no-cache
 # docker compose -f docker-compose.dev.yml up -d frontend
