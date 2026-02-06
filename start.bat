@@ -61,11 +61,18 @@ goto start_services
 :start_services
 
 echo.
+@REM Pour tester la résilience de l'app face aux erreurs SMTP
+@REM echo [MailHog] Lancement de MailHog (Sous Win, UI obligatoirement / port 8025)...
+@REM start "MailHog" /min cmd /c "cd z_doc & MailHog_windows_amd64.exe
+
+echo [MailPit] Lancement de MailPit (Port 8025)...
+start "MailPit" /min cmd /c "cd z_doc & MailPit.exe
+
+
+
+echo.
 echo [2/4] Lancement du Backend (FastAPI)...
 :: /min lance la fenetre reduite dans la barre des taches
-echo.
-echo [MailHog] Lancement de MailHog (port 1080)...
-start "MailHog" /min cmd /c "cd z_doc & MailHog_windows_amd64.exe -ui-bind-addr 0.0.0.0:1080 -api-bind-addr 0.0.0.0:1081"
 echo.
 start "Backend - FastAPI" /min cmd /c "call .venv\Scripts\activate & cd backend & uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
 
@@ -93,6 +100,7 @@ echo.
     echo   - Backend Django: http://localhost:8001/admin/
     echo   - Frontend PPT: http://localhost:5173
     echo   - (Option) Frontend CGC: http://localhost:5174
+    echo   - Frontend UI Mail: http://localhost:8025
     echo ================================================
 
 echo.
