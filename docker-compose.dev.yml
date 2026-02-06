@@ -57,6 +57,9 @@ services:
     depends_on:
       - backend
       - django
+    networks:
+      - appnet
+
   mailpit:
     image: axllent/mailpit:latest
     container_name: mailpit
@@ -68,6 +71,8 @@ services:
 
 networks:
   appnet:
+
 # Relance du cntnr front :
+# OPTION : docker rm -f react_frontend
 # docker compose -f docker-compose.dev.yml build frontend --no-cache
 # docker compose -f docker-compose.dev.yml up -d frontend
