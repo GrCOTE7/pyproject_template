@@ -6,7 +6,7 @@ from ..core.logging import configure_logging
 logger = configure_logging()
 
 
-def send_email(to: str, subject: str, body: str, html: str = None):
+def send_email(to: str, subject: str, body: str, html: str = ""):
     msg = EmailMessage()
     msg["From"] = settings.EMAIL_FROM
     msg["To"] = to

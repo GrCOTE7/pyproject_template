@@ -11,7 +11,7 @@ load_dotenv()
 class Settings:
     """Configuration de l'application FastAPI."""
     # Email (MailHog en local/dev)
-    SMTP_HOST: str = os.getenv("SMTP_HOST", "localhost")
+    SMTP_HOST: str = os.getenv("SMTP_HOST", "mailpit")
     SMTP_PORT: int = int(os.getenv("SMTP_PORT", "1025"))
     SMTP_USER: str = os.getenv("SMTP_USER", "")
     SMTP_PASSWORD: str = os.getenv("SMTP_PASSWORD", "")

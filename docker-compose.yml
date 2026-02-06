@@ -41,6 +41,48 @@ services:
       - ./backend/django:/app
     networks:
       - appnet
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+
+  celery:
+    build: ./backend/django
+    container_name: celery_worker
+    command: celery -A config worker -l info
+    volumes:
+      - ./backend/django:/app
+    depends_on:
+      - redis
+      - django
+    networks:
+      - appnet
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+
+  celery_beat:
+    build: ./backend/django
+    container_name: celery_beat
+    command: celery -A config beat -l info
+    volumes:
+      - ./backend/django:/app
+    depends_on:
+      - redis
+      - django
+    networks:
+      - appnet
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    networks:
+      - appnet
 
   frontend:
     build: ./frontend
