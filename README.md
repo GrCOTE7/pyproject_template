@@ -178,6 +178,24 @@ OU (Prod):
 
 docker compose -f docker-compose.prod.yml up --build -d
 
+Note rapide : `docker.bat`
+
+Vous pouvez utiliser le script `docker.bat` fourni pour démarrer les conteneurs sans taper la commande `docker compose` à la main.
+
+* `./docker dev` → utilise `docker-compose.dev.yml`
+* `./docker prod` → utilise `docker-compose.prod.yml`
+* `./docker .` ou `./docker` (aucun argument) → utilise `docker-compose.yml` (fichier par défaut)
+
+Exemples :
+
+```powershell
+./docker dev       # démarre l'environnement de dev (frontend, fastapi, django...)
+./docker prod  # démarre l'environnement de production (selon docker-compose.prod.yml)
+./docker       # force l'utilisation de docker-compose.yml (utile pour services comme redis/celery)
+```
+
+Remarque : le comportement par défaut peut être ajusté dans `docker.bat` (ligne de configuration `SUFFIX`).
+
 #### Déploiement VPS (prod)
 
 Voir le guide complet : [z_doc/VPS-DEPLOY.md](z_doc/VPS-DEPLOY.md)
@@ -424,16 +442,20 @@ python tests/test_hotreload.py
 
 11) ❌ **Base de données** (PostgreSQL/Redis) : persistance, sessions, cache
 
-12) ❌ **Logging structuré + metrics**
+12) ❌ **Celery**
 
-13) ❌ **Observabilité** (traces, dashboards)
+13) ❌ **Redis**
+
+14) ❌ **Logging structuré + metrics**
+
+15) ❌ **Observabilité** (traces, dashboards)
     ❌ Page web monitorings
 
-14) ❌ **Documentation API enrichie** (descriptions, exemples, schémas WS)
+16) ❌ **Documentation API enrichie** (descriptions, exemples, schémas WS)
 
-15) ❌ **Versioning API + doc enrichie**
+17) ❌ **Versioning API + doc enrichie**
 
-16) ❌ **Performance frontend**
+18) ❌ **Performance frontend**
 
     * Code splitting (lazy loading des composants)
     * Mise en cache des requêtes
@@ -441,19 +463,27 @@ python tests/test_hotreload.py
     * Service Worker pour le mode offline
     * Possibilité d'évoluer vers le multilangues (front uniquement)
 
-17) ❌ **Authentification avancée**
+19) ❌ **Authentification avancée**
 
     * Sessions utilisateurs
     * OAuth2 (Google, GitHub)
     * CF. [Contrôle de Sécu](https://github.com/protectai/vulnhuntr)
 
-18) Vérifications globales & diverses
+20) Vérifications globales & diverses
 
    ❌  Vérifier la récupération d’IP réelle derrière proxy (rate limiting par IP)
 
    ❌ Écrire page z_docs/VSC_Tips ou dans PyMox ? (Extension ToDo, avec settings pour comptage et coloration + raccourcis utiles -❌ ✅ ☢️ 🎯 ↗️ )
 
    ❌ Page Web /teck monitoring : Finir page monitoring (À prori utilisable qu'en local, et affichant les miniatures des 4 URLs clés, observant juste à l'appel, de la réponse HTTP par API...)
+
+   ❌ Tests auto des emails: En attendant
+
+```bash
+./tests/test-email.py
+Invoke-WebRequest -Uri "http://localhost:8000/api/test-email?to=test@local.test" -Method POST
+Et/Ou Insomnia
+```bash
 
    ❌ Intégrer auto-changelog & auto versions by commi_ts (Projet PyMox / GH)
 

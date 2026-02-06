@@ -5,3 +5,7 @@ python-dotenv
 PyJWT
 pytest
 pytest-django
+celery
+redis
+django-celery-results
+django-celery-beat

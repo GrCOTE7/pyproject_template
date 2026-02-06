@@ -5,7 +5,7 @@ pushd "%~dp0"
 :: Usage: docker.bat [dev|prod|.]  ('.' or empty -> docker-compose.yml)
 set "ARG=%~1"
 set "SUFFIX=%ARG%"
-if "%SUFFIX%"=="" set "SUFFIX=.dev"
+@REM if "%SUFFIX%"=="" set "SUFFIX=.dev"
 if /I "%SUFFIX%"=="prod" set "SUFFIX=.prod"
 if /I "%SUFFIX%"=="dev" set "SUFFIX=.dev"
 if "%SUFFIX%"=="." set "SUFFIX="
