@@ -67,7 +67,13 @@ docker exec -e PYTHONPATH=/app -w /app django_backend python /app/tests/test_cel
 docker exec -e PYTHONPATH=/app -w /app django_backend pytest -q tests/test_celery_task.py
 ```
 
-Si `pytest` échoue à cause d'un `conftest.py` (import de FastAPI, etc.), exécutez d'abord le script autonome. Si le fichier de test n'existe pas dans le conteneur, vous pouvez le copier :
+Note recommandée : si `pytest` échoue parce que le `conftest.py` du dossier `tests` importe des dépendances non présentes dans le conteneur (ex. `fastapi`), utilisez la commande Python autonome — elle fonctionne de façon fiable pour valider une task Celery :
+
+```powershell
+docker exec -e PYTHONPATH=/app -w /app django_backend python /app/tests/test_celery_task.py
+```
+
+Si le fichier de test n'existe pas dans le conteneur, copiez-le puis exécutez la commande ci‑dessus :
 
 ```powershell
 docker cp tests/test_celery_task.py django_backend:/app/tests/test_celery_task.py

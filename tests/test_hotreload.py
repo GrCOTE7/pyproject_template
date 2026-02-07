@@ -50,7 +50,9 @@ def test_fastapi_hotreload() -> None:
         response2 = requests.get("http://localhost:8000/api/health", timeout=5)
         server_id_2 = response2.json().get("server_id")
 
-        assert server_id_1 != server_id_2, "FastAPI did not restart (server_id unchanged)"
+        assert (
+            server_id_1 != server_id_2
+        ), "FastAPI did not restart (server_id unchanged)"
     finally:
         test_file.write_text(content, encoding="utf-8")
 
