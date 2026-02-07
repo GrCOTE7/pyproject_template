@@ -10,6 +10,7 @@ load_dotenv()
 
 class Settings:
     """Configuration de l'application FastAPI."""
+
     # Email (MailHog en local/dev)
     SMTP_HOST: str = os.getenv("SMTP_HOST", "mailpit")
     SMTP_PORT: int = int(os.getenv("SMTP_PORT", "1025"))
@@ -35,7 +36,10 @@ class Settings:
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
 
     # JWT
-    JWT_SECRET: str = os.getenv("JWT_SECRET", "change-me")
+    JWT_SECRET: str = os.getenv(
+        "JWT_SECRET",
+        "dev-default-please-change-to-a-secure-32+chars-secret-000",
+    )
     JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM", "HS256")
     JWT_ISSUER: str = os.getenv("JWT_ISSUER", "pyproject_template")
 
