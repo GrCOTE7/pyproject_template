@@ -52,6 +52,7 @@ services:
     command: celery -A config worker -l info
     volumes:
       - ./backend/django:/app
+      - ./backend/django/scripts:/app/scripts
       - ./tests:/app/tests
     depends_on:
       - redis
@@ -59,6 +60,7 @@ services:
     networks:
       - appnet
     environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
 
@@ -75,6 +77,7 @@ services:
     networks:
       - appnet
     environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
 

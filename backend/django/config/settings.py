@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",  # CORS support
-    "apps.auth_api",
+    # "apps.auth_api",
+    "apps.auth_api.apps.AuthApiConfig",
 ]
 
 MIDDLEWARE = [
