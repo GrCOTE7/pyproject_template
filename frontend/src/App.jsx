@@ -218,6 +218,15 @@ function App() {
 
           {isAuthenticated && isAdmin && (
             <span className="mt-2">
+
+              {" | "}
+              <Link
+                to="/tasks"
+                className="text-blue-700 hover:text-blue-800 underline"
+              >
+                Tasks
+              </Link>
+
               {" | "}
               <Link
                 to="/teck"

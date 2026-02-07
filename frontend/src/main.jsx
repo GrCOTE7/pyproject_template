@@ -8,6 +8,7 @@ import { BackendProvider } from "./context/BackendContext";
 
 import About from "./pages/About.jsx";
 import Monitoring from "./pages/Monitoring.jsx";
+import Tasks from "./pages/Tasks.jsx";
 import Teck from "./pages/Teck.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/" element={<App />} />
           <Route path="/about" element={<About />} />
           <Route path="/monitoring" element={<Monitoring />} />
+          <Route path="/tasks" element={<Tasks />} />
           <Route path="/teck" element={<Teck />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
