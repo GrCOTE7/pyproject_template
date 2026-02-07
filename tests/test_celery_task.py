@@ -10,8 +10,8 @@ docker exec -e PYTHONPATH=/app -w /app django_backend python /app/tests/test_cel
 """
 
 if __name__ == "__main__":
-    r = add.delay(2, 3)
+    r = add.delay(3, 4)
     print("task_id:", r.id)
     res = AsyncResult(r.id).get(timeout=10)
     print("result:", res)
-    assert res == 5
+    assert res == 7

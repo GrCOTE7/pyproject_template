@@ -500,3 +500,5 @@ Et/Ou Insomnia
 * Les responsabilités sont découplées pour scaler proprement.
 * Les endpoints FastAPI sont disponibles en **/api** (legacy) et en **/api/v1** (versionné).
 * APIs rapides et scalables
+
+//2fix ? 2 tasks P
