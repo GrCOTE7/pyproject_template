@@ -57,9 +57,11 @@ docker exec -it django_backend python manage.py shell -c "from yourapp.tasks imp
 ```powershell
 # task_id obtenu depuis add.delay(...)
 docker exec redis redis-cli GET "celery-task-meta-<task_id>"
+# OU :
+docker exec -e PYTHONPATH=/app -w /app django_backend python /app/tests/test_celery_task.py
 ```
 
-7) Fichiers/boilerplate utiles
+1) Fichiers/boilerplate utiles
 
 - `backend/django/config/celery.py` (exemple minimal) :
 

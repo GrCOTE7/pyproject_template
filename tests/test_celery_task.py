@@ -5,7 +5,7 @@ from celery.result import AsyncResult
 Test minimal pour Celery : lance la tâche `add` et vérifie le résultat.
 Exécuter dans le conteneur Django (ou depuis un env avec PYTHONPATH/DJANGO_SETTINGS_MODULE configurés).
 
-Lancer dnas POWERSHELL avec :
+Lancer dans POWERSHELL avec :
 docker exec -e PYTHONPATH=/app -w /app django_backend python /app/tests/test_celery_task.py
 """
 
