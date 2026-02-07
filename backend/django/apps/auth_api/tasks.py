@@ -2,8 +2,12 @@ from celery import shared_task
 
 
 @shared_task
-def add(x, y):
+def add(x, y) -> int:
     return x + y
+
+@shared_task
+def times(x, y) -> int:
+    return x * y
 
 
 # dans backend/
