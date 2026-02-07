@@ -135,13 +135,27 @@ def tasks_list(request):
         return JsonResponse({"detail": "Method not allowed"}, status=405)
 
     try:
+        import inspect
+
         from . import tasks as tasks_module
 
-        task_names = [
-            name
-            for name in dir(tasks_module)
-            if not name.startswith("_") and callable(getattr(tasks_module, name))
-        ]
+        task_names = []
+        for name, obj in vars(tasks_module).items():
+            if name.startswith("_"):
+                continue
+            # functions defined in this module
+            if (
+                inspect.isfunction(obj)
+                and getattr(obj, "__module__", "") == tasks_module.__name__
+            ):
+                task_names.append(name)
+                continue
+            # celery Task objects expose a 'delay' callable
+            if hasattr(obj, "delay") and callable(getattr(obj, "delay")):
+                task_names.append(name)
+                continue
+        # ensure unique and stable order
+        task_names = sorted(dict.fromkeys(task_names))
     except Exception:
         return JsonResponse({"detail": "Unable to list tasks"}, status=500)
 
