@@ -15,7 +15,7 @@ jobs:
       DJANGO_DEBUG: "False"
       DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
       DJANGO_CORS_ORIGINS: http://localhost:5173
-      JWT_SECRET: test-jwt-secret
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
       JWT_ALGORITHM: HS256
       JWT_ISSUER: pyproject_template
     steps:
@@ -33,6 +33,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
           pip install -r backend/django/requirements.txt
+
+      - name: Check JWT secret is provided
+        run: |
+          if [ -z "${JWT_SECRET}" ]; then
+            echo "ERROR: GitHub secret JWT_SECRET is not set. Set it in repository settings." >&2
+            exit 1
+          fi
 
       - name: Run backend tests
         run: pytest tests/fastapi tests/django
