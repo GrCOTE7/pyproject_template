@@ -124,3 +124,25 @@ def refresh(request):
         return JsonResponse({"detail": "User not found"}, status=401)
 
     return JsonResponse(_build_tokens(user))
+
+
+def tasks_list(request):
+    """Retourne une liste simple des tâches définies dans apps.auth_api.tasks
+
+    Expose uniquement une vue GET qui renvoie JSON {"tasks": [...]}.
+    """
+    if request.method != "GET":
+        return JsonResponse({"detail": "Method not allowed"}, status=405)
+
+    try:
+        from . import tasks as tasks_module
+
+        task_names = [
+            name
+            for name in dir(tasks_module)
+            if not name.startswith("_") and callable(getattr(tasks_module, name))
+        ]
+    except Exception:
+        return JsonResponse({"detail": "Unable to list tasks"}, status=500)
+
+    return JsonResponse({"tasks": task_names})

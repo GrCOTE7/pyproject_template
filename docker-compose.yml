@@ -39,6 +39,7 @@ services:
       - ./backend/django/.env
     volumes:
       - ./backend/django:/app
+      - ./tests:/app/tests
     networks:
       - appnet
     environment:
@@ -51,6 +52,7 @@ services:
     command: celery -A config worker -l info
     volumes:
       - ./backend/django:/app
+      - ./tests:/app/tests
     depends_on:
       - redis
       - django
@@ -66,6 +68,7 @@ services:
     command: celery -A config beat -l info
     volumes:
       - ./backend/django:/app
+      - ./tests:/app/tests
     depends_on:
       - redis
       - django
@@ -114,7 +117,6 @@ services:
 
 networks:
   appnet:
-
 # Relance du cntnr front :
 # OPTION : docker rm -f react_frontend
 # docker compose -f docker-compose.dev.yml build frontend --no-cache
