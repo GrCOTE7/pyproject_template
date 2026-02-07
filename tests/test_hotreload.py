@@ -21,28 +21,26 @@ class Colors:
     BOLD = "\033[1m"
 
 
-def test_fastapi_hotreload() -> Tuple[bool, str]:
+def test_fastapi_hotreload() -> None:
     """
     Teste le hot-reload de FastAPI en vérifiant le server_id
     À chaque redémarrage, FastAPI génère un nouveau UUID
     """
+    # Récupère le server_id actuel
+    response1 = requests.get("http://localhost:8000/api/health", timeout=5)
+    assert response1.status_code == 200, "FastAPI health endpoint not responding"
+
+    server_id_1 = response1.json().get("server_id")
+
+    # Modifie un fichier pour déclencher le reload
+    test_file = Path("backend/app/main.py")
+    assert test_file.exists(), "main.py not found"
+
+    content = test_file.read_text(encoding="utf-8")
+
+    # Ajoute un commentaire temporaire et s'assure de restaurer le fichier
+    modified_content = content + "\n# Test hot-reload\n"
     try:
-        # Récupère le server_id actuel
-        response1 = requests.get("http://localhost:8000/api/health", timeout=5)
-        if response1.status_code != 200:
-            return False, "FastAPI health endpoint not responding"
-
-        server_id_1 = response1.json().get("server_id")
-
-        # Modifie un fichier pour déclencher le reload
-        test_file = Path("backend/app/main.py")
-        if not test_file.exists():
-            return False, "main.py not found"
-
-        content = test_file.read_text(encoding="utf-8")
-
-        # Ajoute un commentaire temporaire
-        modified_content = content + "\n# Test hot-reload\n"
         test_file.write_text(modified_content, encoding="utf-8")
 
         # Attend le redémarrage
@@ -52,56 +50,28 @@ def test_fastapi_hotreload() -> Tuple[bool, str]:
         response2 = requests.get("http://localhost:8000/api/health", timeout=5)
         server_id_2 = response2.json().get("server_id")
 
-        # Restaure le fichier
+        assert server_id_1 != server_id_2, "FastAPI did not restart (server_id unchanged)"
+    finally:
         test_file.write_text(content, encoding="utf-8")
 
-        if server_id_1 != server_id_2:
-            return True, f"FastAPI hot-reload: OK (server restarted)"
-        else:
-            return False, "FastAPI did not restart (server_id unchanged)"
 
-    except Exception as e:
-        return False, f"Error testing FastAPI hot-reload: {str(e)}"
-
-
-def test_django_hotreload() -> Tuple[bool, str]:
+def test_django_hotreload() -> None:
     """
     Teste le hot-reload de Django
     Django utilise le mécanisme de détection de changements de fichiers
     """
-    try:
-        # Pour Django, on vérifie juste qu'il répond après une modification
-        response1 = requests.get("http://localhost:8001/admin/login/", timeout=5)
-        if response1.status_code != 200:
-            return False, "Django not responding"
-
-        # Note: Le test complet nécessiterait de modifier un fichier Django
-        # et de vérifier que le changement est pris en compte
-        # Pour le moment, on vérifie juste que le serveur répond
-
-        return True, "Django hot-reload: OK (runserver --reload active)"
-
-    except Exception as e:
-        return False, f"Error testing Django hot-reload: {str(e)}"
+    # Pour Django, on vérifie juste qu'il répond
+    response1 = requests.get("http://localhost:8001/admin/login/", timeout=5)
+    assert response1.status_code == 200, "Django not responding"
 
 
-def test_react_hotreload() -> Tuple[bool, str]:
+def test_react_hotreload() -> None:
     """
     Teste le hot-reload de React (Vite)
     Vérifie que le serveur Vite répond et que le WebSocket est actif
     """
-    try:
-        response = requests.get("http://localhost:5173", timeout=5)
-        if response.status_code != 200:
-            return False, "React dev server not responding"
-
-        # Vite utilise le WebSocket pour le HMR (Hot Module Replacement)
-        # Si le serveur répond, le HMR est généralement actif
-
-        return True, "React (Vite) hot-reload: OK (HMR active)"
-
-    except Exception as e:
-        return False, f"Error testing React hot-reload: {str(e)}"
+    response = requests.get("http://localhost:5173", timeout=5)
+    assert response.status_code == 200, "React dev server not responding"
 
 
 def run_hotreload_tests(verbose: bool = True) -> bool:
