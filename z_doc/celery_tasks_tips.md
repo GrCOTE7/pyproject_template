@@ -151,3 +151,5 @@ Rappel :
 
 docker compose down
 docker compose up -d --build
+
+❌ Flower (Monitoring de Celery)
