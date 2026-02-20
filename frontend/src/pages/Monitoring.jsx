@@ -34,12 +34,10 @@ const Monitoring = () => {
     <div className="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-md flex flex-col items-center space-y-4 mt-8">
       <h1 className="text-2xl font-bold text-purple-700">Monitoring (local)</h1>
       <p className="text-gray-500 text-sm italic">
-        Cette page de monitoring n'est accessible qu'en local (localhost ou
-        127.0.0.1).
+        Cette page de monitoring n'est accessible qu'en local (localhost ou 127.0.0.1).
       </p>
       <p className="text-gray-500 text-sm italic">
-        À venir: Grille de miniautures de quelques URLS clés (Local - Remote -
-        API) pour faciliter le debug et la surveillance.
+        À venir: Grille de miniautures de quelques URLS clés (Local - Remote - API) pour faciliter le debug et la surveillance.
       </p>
       <div className="mt-2 text-green-700">
         Environnement local détecté. Monitoring activé.

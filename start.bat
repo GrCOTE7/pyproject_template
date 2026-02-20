@@ -96,7 +96,7 @@ echo.
     echo ================================================
     echo   Services lancés en ARRIÈRE-PLAN (réduits).
     echo   - Serveur email: http://localhost:1025
-    echo   - Backend FastAPI: http://localhost:8000/api/hello
+    echo   - Backend FastAPI: http://localhost:8000/api/health
     echo   - Backend Django: http://localhost:8001/admin/
     echo   - Frontend PPT: http://localhost:5173
     echo   - (Option) Frontend CGC: http://localhost:5174

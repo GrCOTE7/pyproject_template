@@ -25,10 +25,10 @@ popd
 @REM set EXITCODE_MAILDEV=%ERRORLEVEL%
 
 REM Démarre aussi Cryptogeeks (CGC) en local
-@REM pushd "%~dp0deploy\cryptogeeks"
-@REM docker.exe compose -f docker-compose%SUFFIX%.yml up --build -d
-@REM set EXITCODE2=%ERRORLEVEL%
-@REM popd
+pushd "%~dp0deploy\cryptogeeks"
+docker.exe compose -f docker-compose%SUFFIX%.yml up --build -d
+set EXITCODE2=%ERRORLEVEL%
+popd
 
 REM Combine les codes de sortie (si l'un échoue, EXITCODE sera non nul)
 if %EXITCODE% NEQ 0 exit /b %EXITCODE%
