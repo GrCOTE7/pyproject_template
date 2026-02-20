@@ -10,7 +10,7 @@ echo   Pyproject Template - Setup Securité
 echo ========================================
 echo.
 
-REM Verification de Python
+REM Verification de Python (py -0)
 python --version >nul 2>&1
 if errorlevel 1 (
     echo [ERREUR] Python n'est pas installe ou n'est pas dans le PATH
@@ -35,6 +35,8 @@ if exist .venv\Scripts\python.exe (
     )
     echo Creation de l'environnement virtuel - racine...
     python -m venv .venv
+    REM py -0
+    REM py -3.12 venv .venv # pour installer une VEnv avec py 3.12
     if not exist .venv\Scripts\python.exe (
         echo [ERREUR] Echec de creation de l'environnement virtuel.
         pause
