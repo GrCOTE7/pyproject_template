@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Structure du projet</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    
+    <style>
+      body {
+        margin: 0;
+        color: #eee;
+        background: #333;
+      }
+      svg {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tree</h1>
+    <!-- Conteneur -->
+    <svg id="mindmap"></svg>
+
+    <!-- D3 (obligatoire) -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- Markmap auto bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4/dist/browser/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4/dist/browser/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+    <script>
+      const { Markmap, Transformer } = window.markmap;
+
+      fetch("../STRUCTURE_MARKMAP.md")
+        .then((res) => res.text())
+        .then((markdown) => {
+          let options = {};
+
+          // 🔥 extraction manuelle du frontmatter
+          const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
+          if (match) {
+            console.log('Options : ' + match[1]);
+            const yaml = jsyaml.load(match[1]);
+            options = yaml?.markmap || {};
+            markdown = markdown.slice(match[0].length);
+          }
+          const transformer = new Transformer();
+          const { root } = transformer.transform(markdown);
+
+          // 🔥 récupère les options du frontmatter
+          // console.log(root.payload);
+          // const options = root.payload?.markmap || {};
+
+          Markmap.create("#mindmap", options, root);
+        });
+    </script>
+  </body>
+</html>

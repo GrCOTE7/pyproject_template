@@ -305,6 +305,11 @@ setup.bat
 # Ou manuellement
 cp .env.example .env
 # Éditer .env avec vos valeurs
+
+# Tip:
+# Simple server local :
+py -m http.server
+# → http://localhost:8000/
 ```
 
 ### Variables essentielles

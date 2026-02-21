@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Structure du projet</title>
+  <style>
+    body {
+      margin: 0;
+      color: #eee;
+      background: #333;
+    }
+    svg {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tree</h1>
+<!-- Conteneur -->
+<svg id="mindmap"></svg>
+
+<!-- D3 (obligatoire) -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+<!-- Markmap auto bundle -->
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4/dist/browser/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4/dist/browser/index.min.js"></script>
+
+<script>
+  const { Markmap, Transformer } = window.markmap;
+
+  fetch("../STRUCTURE_MARKMAP.md")
+    .then(res => res.text())
+    .then(markdown => {
+      const transformer = new Transformer();
+      const { root } = transformer.transform(markdown);
+      Markmap.create("#mindmap", null, root);
+    });
+</script>
+
+</body>
+</html>

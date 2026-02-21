@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree Markmap Live</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/style.css"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 98%;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      
+      article{
+        /* border: 10px solid green; */
+        width: 100vw;
+        height: 100%;
+      }
+      
+      #mindmap {
+        margin: auto;
+        width: 95vw;
+        height: 95%;
+        display: block;
+        border: 1px solid red;
+      }
+      .markmap-dark {
+        background: #0f172a;
+        color: white;
+      }
+      .markmap-node-text {
+        font-family: ui-monospace, monospace;
+        font-size: 14px;
+      }
+      .markmap-node.folder > .markmap-node-text {
+        fill: #22c55e;
+        font-weight: 600;
+      }
+      .markmap-node.folder > .markmap-node-text::before {
+        content: "📁 ";
+      }
+      .markmap-node.file > .markmap-node-text {
+        fill: #60a5fa;
+      }
+      .markmap-node.file > .markmap-node-text::before {
+        content: "📄 ";
+      }
+      .markmap-link {
+        stroke: #334155;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <h1>Tree Markmap Live</h1>
+      <svg id="mindmap"></svg>
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/index.js"></script>
+
+    <script>
+      // ------------------------------------------------
+      // 1. JSON de la structure (générée côté Python)
+      // ------------------------------------------------
+      const treeData = {
+        content: "Projet",
+        children: [
+          { content: ".dockerignore", children: [], type: "file" },
+          { content: ".env", children: [], type: "file" },
+          {
+            content: "backend",
+            type: "folder",
+            children: [
+              {
+                content: "app",
+                type: "folder",
+                children: [{ content: "main.py", type: "file", children: [] }],
+              },
+            ],
+          },
+        ],
+      };
+
+      // ------------------------------------------------
+      // 2. Ajouter classe file/folder pour les icônes
+      // ------------------------------------------------
+      function addNodeClasses(node) {
+        node.type = node.type || (node.children?.length ? "folder" : "file");
+        if (node.children) node.children.forEach(addNodeClasses);
+      }
+      addNodeClasses(treeData);
+
+      // ------------------------------------------------
+      // 3. Créer la map
+      // ------------------------------------------------
+      const mm = markmap.Markmap.create(
+        "svg#mindmap",
+        { duration: 2100, initialExpandLevel: -1 },
+        treeData,
+      );
+
+      // ------------------------------------------------
+      // 4. Ajouter la toolbar
+      // ------------------------------------------------
+      const toolbar = new markmap.Toolbar();
+      toolbar.attach(mm);
+      const el = toolbar.render();
+      el.style.position = "absolute";
+      el.style.bottom = "20px";
+      el.style.right = "20px";
+      document.body.appendChild(el);
+
+      // ------------------------------------------------
+      // 5. Dark mode automatique
+      // ------------------------------------------------
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("markmap-dark");
+      }
+    </script>
+  </body>
+</html>
