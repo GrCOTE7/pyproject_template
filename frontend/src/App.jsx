@@ -119,7 +119,7 @@ function App() {
           </h1>
           <h2>
             <span className="text-xl italic m-2 text-blue-600">
-              (FrontEnd: ViteJS + React)
+              (123FrontEnd: ViteJS + React)
             </span>
             -<span className="text-xl ml-1">v1.0.2</span>
           </h2>

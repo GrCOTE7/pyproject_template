@@ -82,11 +82,11 @@ echo [3/4] Lancement du Backend (Django)...
 start "Backend - Django" /min cmd /c "call .venv\Scripts\activate & cd backend\django & python manage.py runserver 0.0.0.0:8001"
 
 echo.
-echo [4/4] Lancement du Frontend (Vite)...
+echo [4/4] Lancement du Frontend (Vite) Cote7.com...
 :: /min lance la fenetre reduite dans la barre des taches
 start "Frontend - Vite" /min cmd /c "cd frontend & npm run dev"
 
-REM Démarre aussi Cryptogeeks (CGC) en local
+REM Démarre aussi Cryptogeeks.com (CGC) en local
 echo.
 @REM echo [4b/4] Lancement de Cryptogeeks (Vite, port 5174)...
 :: /min lance la fenetre reduite dans la barre des taches
@@ -98,9 +98,10 @@ echo.
     echo   - Serveur email: http://localhost:1025
     echo   - Backend FastAPI: http://localhost:8000/api/health
     echo   - Backend Django: http://localhost:8001/admin/
-    echo   - Frontend PPT: http://localhost:5173
-    echo   - (Option) Frontend CGC: http://localhost:5174
-    echo   - Frontend UI Mail: http://localhost:8025
+    echo   - Frontends ViteJS-React :
+    echo       → PPT : http://localhost:5173
+    echo       → CGC (Option) : http://localhost:5174
+    echo   - UI Mail: http://localhost:8025
     echo ================================================
 
 echo.
