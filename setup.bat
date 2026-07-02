@@ -1,44 +1,46 @@
 @echo off
+chcp 65001 > nul
+
 REM ============================================
 REM Script d'installation et configuration
-REM Pyproject Template - Securite et Configuration
+REM Pyproject Template - Sécurité et Configuration
 REM ============================================
 
 echo.
 echo ========================================
-echo   Pyproject Template - Setup Securité
+echo   Pyproject Template - Setup Sécurité
 echo ========================================
 echo.
 
 REM Verification de Python (py -0)
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo [ERREUR] Python n'est pas installe ou n'est pas dans le PATH
+    echo [ERREUR] Python n'est pas installé ou n'est pas dans le PATH
     pause
     exit /b 1
 )
 
-echo [OK] Python detecte
+echo [OK] Python détecté
 echo.
 
-REM Installation des dependances backend FastAPI
+REM Installation des dépendances backend FastAPI
 echo ----------------------------------------
-echo Installation des dependances FastAPI...
+echo Installation des dépendances FastAPI...
 echo ----------------------------------------
 if exist .venv\Scripts\python.exe (
-    echo Environnement virtuel detecte - racine
+    echo Environnement virtuel détecté - racine
     call .venv\Scripts\activate
 ) else (
     if exist .venv (
         echo [INFO] Environnement virtuel incomplet - suppression...
         rmdir /s /q .venv
     )
-    echo Creation de l'environnement virtuel - racine...
+    echo Création de l'environnement virtuel - racine...
     python -m venv .venv
     REM py -0
     REM py -3.12 venv .venv # pour installer une VEnv avec py 3.12
     if not exist .venv\Scripts\python.exe (
-        echo [ERREUR] Echec de creation de l'environnement virtuel.
+        echo [ERREUR] Echec de création de l'environnement virtuel.
         pause
         exit /b 1
     )
@@ -46,43 +48,47 @@ if exist .venv\Scripts\python.exe (
 )
 
 echo Mise a jour de pip...
-python -m pip install --upgrade pip
+@REM python -m pip install --upgrade pip
+"%~dp0.venv\Scripts\python.exe" -m pip install --upgrade pip
 
-pip install -r backend\requirements.txt
+echo Installation des dépendances FastAPI...
+@REM pip install -r backend\requirements.txt
+"%~dp0.venv\Scripts\python.exe" -m pip install -r backend\requirements.txt
 if errorlevel 1 (
-    echo [ERREUR] Installation FastAPI echouee
+    echo [ERREUR] Installation FastAPI échouée
     pause
     exit /b 1
 )
-echo [OK] Dependances FastAPI installees
+echo [OK] Dépendances FastAPI installées
 echo.
 
 REM Installation Django (deja dans le venv racine)
 echo ----------------------------------------
-echo Installation des dependances Django...
+echo Installation des dépendances Django...
 echo ----------------------------------------
-pip install -r backend\django\requirements.txt
+@REM pip install -r backend\django\requirements.txt
+"%~dp0.venv\Scripts\python.exe" -m pip install -r backend\django\requirements.txt
 if errorlevel 1 (
-    echo [ERREUR] Installation Django echouee
+    echo [ERREUR] Installation Django échouée
     pause
     exit /b 1
 )
-echo [OK] Dependances Django installees
+echo [OK] Dépendances Django installées
 echo.
 
 REM Retour a la racine
 REM Installation frontend
 echo ----------------------------------------
-echo Installation des dependances Frontend...
+echo Installation des dépendances Frontend...
 echo ----------------------------------------
 cd frontend
 call npm install
 if errorlevel 1 (
-    echo [ERREUR] Installation npm echouee
+    echo [ERREUR] Installation npm échouée
     pause
     exit /b 1
 )
-echo [OK] Dependances Frontend installees
+echo [OK] Dépendances Frontend installées
 echo.
 cd ..
 
@@ -92,13 +98,13 @@ echo Verification de la configuration...
 echo ----------------------------------------
 
 if not exist ".env" (
-    echo [INFO] Fichier .env non trouve - Creation depuis .env.example...
+    echo [INFO] Fichier .env non trouvé - Création depuis .env.example...
     copy .env.example .env
     echo [ATTENTION] Editez le fichier .env avec vos valeurs avant de lancer l'application
 )
 
 if not exist "backend\.env" (
-    echo [INFO] Fichier backend/.env non trouve - Creation...
+    echo [INFO] Fichier backend/.env non trouvé - Création...
     copy backend\.env.example backend\.env 2>nul
     if errorlevel 1 (
         echo [INFO] Creation manuelle de backend/.env
@@ -112,10 +118,10 @@ if not exist "backend\.env" (
 )
 
 if not exist "backend\django\.env" (
-    echo [INFO] Fichier backend/django/.env non trouve - Creation...
+    echo [INFO] Fichier backend/django/.env non trouvé - Création...
     copy backend\django\.env.example backend\django\.env 2>nul
     if errorlevel 1 (
-        echo [INFO] Creation manuelle de backend/django/.env
+        echo [INFO] Création manuelle de backend/django/.env
         echo DJANGO_SECRET_KEY=dev-secret-key-change-in-production > backend\django\.env
         echo DJANGO_DEBUG=True >> backend\django\.env
         echo DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1 >> backend\django\.env
@@ -143,7 +149,7 @@ python backend\django\manage.py migrate
 if errorlevel 1 (
     echo [AVERTISSEMENT] Migrations echouees
 )
-echo [OK] Migrations executees
+echo [OK] Migrations executées
 echo.
 
 REM Creation du superuser admin/admin pour le dev
@@ -171,17 +177,16 @@ if errorlevel 1 (
 echo.
 
 echo ========================================
-echo ========================================
-echo   Installation terminee !
+echo   Installation terminée !
 echo ========================================
 echo.
-echo Prochaines etapes:
-echo   1. Editez .env avec vos parametres si necessaire
+echo Prochaines étapes:
+echo   1. Éditez .env avec vos paramètres si nécessaire
 echo   2. Django Admin: http://localhost:8001/admin/
 echo      Login: admin / Password: admin
-echo   3. Consultez SECURITY.md pour la checklist de securite
+echo   3. Consultez SECURITY.md pour la checklist de sécurité
 echo.
-echo Pour generer une cle Django secrete:
+echo Pour générer une clé Django secrète:
 echo   python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 echo.
 echo ========================================

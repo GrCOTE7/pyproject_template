@@ -105,9 +105,9 @@ echo.
     echo ================================================
 
 echo.
-echo [5/5] Attente initiale (7s), puis 5 tentatives chaque seconde...
-set /a INITIAL_DELAY=7
-set /a RETRY_MAX=5
+echo [5/5] Attente initiale (5s), puis 7 tentatives chaque seconde...
+set /a INITIAL_DELAY=5
+set /a RETRY_MAX=7
 set /a RETRY_DELAY=1
 set /a RETRIES=0
 

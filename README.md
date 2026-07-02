@@ -28,8 +28,6 @@ Pour le dev, possibilité de démarrer 100% en local ou 100% en Docker. Dans les
 
 ---
 
----
-
 ### Frontend
 
 [![Node](https://img.shields.io/badge/node-20-3C873A)](https://nodejs.org/)

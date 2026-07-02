@@ -19,18 +19,28 @@ docker.exe compose -f docker-compose%SUFFIX%.yml up --build -d
 set EXITCODE=%ERRORLEVEL%
 popd
 
-@REM REM Démarre le serveur Maildev
+REM Démarre le serveur Maildev
 @REM echo [*] Démarrage du serveur Maildev (port 1080/1025)...
 @REM docker.exe compose -f docker-compose%SUFFIX%.yml up -d maildev
 @REM set EXITCODE_MAILDEV=%ERRORLEVEL%
 
 REM Démarre aussi Cryptogeeks (CGC) en local
 pushd "%~dp0deploy\cryptogeeks"
+docker.exe network inspect proxy >nul 2>&1
+if errorlevel 1 (
+	echo [*] Creation du reseau Docker externe "proxy"...
+	docker.exe network create proxy >nul
+)
 docker.exe compose -f docker-compose%SUFFIX%.yml up --build -d
 set EXITCODE2=%ERRORLEVEL%
 popd
 
 REM Combine les codes de sortie (si l'un échoue, EXITCODE sera non nul)
-if %EXITCODE% NEQ 0 exit /b %EXITCODE%
-if %EXITCODE2% NEQ 0 exit /b %EXITCODE2%
+if %EXITCODE% NEQ 0 (
+	exit /b %EXITCODE%
+)
+if %EXITCODE2% NEQ 0 (
+	exit /b %EXITCODE2%
+)
+
 exit /b 0

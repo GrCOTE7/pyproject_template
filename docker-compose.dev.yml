@@ -75,5 +75,5 @@ networks:
 
 # Relance du cntnr front :
 # OPTION : docker rm -f react_frontend
-# docker compose -f docker-compose.dev.yml build frontend --no-cache
+#   
 # docker compose -f docker-compose.dev.yml up -d frontend
