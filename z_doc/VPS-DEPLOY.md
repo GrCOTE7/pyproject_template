@@ -81,7 +81,19 @@ Le plus simple sur VPS est d’utiliser un proxy TLS sur l’hôte (Caddy ou Ngi
 
 <!-- > Pour plusieurs domaines sur un même VPS, voir : [z_doc/VPS-MULTI-DOMAIN.md](z_doc/VPS-MULTI-DOMAIN.md) -->
 
+
+
+
 ## 6) Vérifications utiles
+
+### Rentrer en CLI, puis Idle
+
+```bash
+docker exec -it <nom_du_conteneur> bash
+python manage.py shell
+```
+
+### Logs
 
 ```bash
 # Logs frontend (nginx)
@@ -92,4 +104,24 @@ docker logs -f fastapi_backend
 
 # Logs Django
 docker logs -f django_backend
+```
+
+### Controle - Liste des User
+
+```bash
+python manage.py shell -c "from django.contrib.auth import get_user_model; User=get_user_model(); print(list(User.objects.values('id','username','email','is_superuser')))"
+```
+
+Ou dans une Vue temporaire :
+
+#### ⚠️ Que pour Super Admin
+
+```bash
+from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+
+def list_users(request):
+    User = get_user_model()
+    return JsonResponse(list(User.objects.values('id','username','email','is_superuser')), safe=False)
+
 ```
