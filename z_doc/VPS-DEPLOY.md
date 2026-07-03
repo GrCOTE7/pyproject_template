@@ -81,9 +81,6 @@ Le plus simple sur VPS est d’utiliser un proxy TLS sur l’hôte (Caddy ou Ngi
 
 <!-- > Pour plusieurs domaines sur un même VPS, voir : [z_doc/VPS-MULTI-DOMAIN.md](z_doc/VPS-MULTI-DOMAIN.md) -->
 
-
-
-
 ## 6) Vérifications utiles
 
 ### Rentrer en CLI, puis Idle
@@ -91,6 +88,13 @@ Le plus simple sur VPS est d’utiliser un proxy TLS sur l’hôte (Caddy ou Ngi
 ```bash
 docker exec -it <nom_du_conteneur> bash
 python manage.py shell
+```
+
+Exemple :
+
+```bash
+docker ps
+docker exec -it django_backend python manage.py createsuperuser
 ```
 
 ### Logs
