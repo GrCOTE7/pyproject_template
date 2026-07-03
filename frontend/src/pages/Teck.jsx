@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { authFetch, isLocalhost } from "../auth";
 
+const isLocal = !isLocalhost; // Forcer le mode localhost pour les tests en dev
+
 const Teck = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const abc = "Abc String";
+  const abc = !isLocal ? "Mais uniquement en mode dev, en local." : "(Ouvrir MailPit pour voir l'email de test)";
 
   const [emailResult, setEmailResult] = useState("");
 
@@ -40,12 +42,9 @@ const Teck = () => {
         Seuls les admins authentifiés peuvent voir ce message.
       </p>
       <hr />
-      <p>Envoi d'un email de test {abc}</p>
-
-      Ici, en local uniquement, vous pouvez tester le bouton d'envoi d'un email de test. Pas en réel, en production.
-      <br/>
-      <br/>
-      {isLocalhost && (
+      <p>Ci-dessous un bouton pour envoyer un email de test</p>
+      <p>{abc}</p>
+      {isLocal && (
         <>
           <button
             onClick={runEmailTest}
