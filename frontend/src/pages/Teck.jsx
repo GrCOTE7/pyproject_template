@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { authFetch } from "../auth";
+import { authFetch, isLocalhost } from "../auth";
 
 const Teck = () => {
   const [message, setMessage] = useState("");
@@ -42,19 +42,24 @@ const Teck = () => {
       <hr />
       <p>Envoi d'un email de test {abc}</p>
 
-      {/* ❌ only in local can send an email */}
+      Ici, en local uniquement, vous pouvez tester le bouton d'envoi d'un email de test. Pas en réel, en production.
+      <br/>
+      <br/>
+      {isLocalhost && (
+        <>
+          <button
+            onClick={runEmailTest}
+            className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-500"
+          >
+            Lancer le test email
+          </button>
 
-      <button
-        onClick={runEmailTest}
-        className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-500"
-      >
-        Lancer le test email
-      </button>
-
-      {emailResult && (
-        <pre className="bg-gray-100 p-3 rounded text-sm mt-4 w-full">
-          {emailResult}
-        </pre>
+          {emailResult && (
+            <pre className="bg-gray-100 p-3 rounded text-sm mt-4 w-full">
+              {emailResult}
+            </pre>
+          )}
+        </>
       )}
 
       <hr />
