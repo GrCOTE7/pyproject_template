@@ -2,7 +2,7 @@
 
 Ce projet est prêt pour un déploiement VPS via Docker (mode prod). La stack déployée expose **uniquement** le frontend (Nginx) en HTTP. Les backends sont accessibles en interne via le réseau Docker.
 
-## 1) Pré‑requis VPS
+## 1) Pré‑requidocker s VPS
 
 - Docker Engine installé
 - Docker Compose v2 installé

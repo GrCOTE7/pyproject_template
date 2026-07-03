@@ -20,6 +20,7 @@ def days_in_algo_month(month: int) -> int:
         raise ValueError(f"Mois {month} invalide dans le calendrier algoréen")
 
 
+print("\nQuel nombre de mois ?")
 month = int(input())
 
 print(days_in_algo_month(month))
