@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { authFetch, isLocalhost } from "../auth";
 
-const isLocal = !isLocalhost; // Forcer le mode localhost pour les tests en dev
+const isLocal = isLocalhost; // Forcer le mode localhost pour les tests en dev
 
 const Teck = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  // Pour tester facilement réel / prod VS local / dev
   const abc = !isLocal ? "Mais uniquement en mode dev, en local." : "(Ouvrir MailPit pour voir l'email de test)";
 
   const [emailResult, setEmailResult] = useState("");
