@@ -69,7 +69,6 @@ echo [MailPit] Lancement de MailPit (Port 8025)...
 start "MailPit" /min cmd /c "cd z_doc & MailPit.exe
 
 
-
 echo.
 echo [2/4] Lancement du Backend (FastAPI)...
 :: /min lance la fenetre reduite dans la barre des taches
