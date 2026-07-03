@@ -52,3 +52,8 @@ www.cote7.com {
     reverse_proxy react_frontend:80
   }
 }
+
+gsm.cote7.com {
+    reverse_proxy localhost:7777
+}
+
