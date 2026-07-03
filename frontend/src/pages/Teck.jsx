@@ -6,6 +6,20 @@ const Teck = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const abc = "Abc String";
+
+  const [emailResult, setEmailResult] = useState("");
+
+  const runEmailTest = () => {
+    authFetch("/api/teck-email")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "ok") setEmailResult(data.output);
+        else setEmailResult("Erreur: " + data.output);
+      })
+      .catch(() => setEmailResult("Erreur réseau"));
+  };
+
   useEffect(() => {
     authFetch("/api/teck")
       .then((res) => res.json())
@@ -25,6 +39,25 @@ const Teck = () => {
       <p className="text-gray-500 text-sm italic">
         Seuls les admins authentifiés peuvent voir ce message.
       </p>
+      <hr />
+      <p>Envoi d'un email de test {abc}</p>
+
+      {/* ❌ only in local can send an email */}
+
+      <button
+        onClick={runEmailTest}
+        className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-500"
+      >
+        Lancer le test email
+      </button>
+
+      {emailResult && (
+        <pre className="bg-gray-100 p-3 rounded text-sm mt-4 w-full">
+          {emailResult}
+        </pre>
+      )}
+
+      <hr />
       <Link to="/" className="mt-4 text-blue-600 hover:text-blue-500 underline">
         Retour à l'accueil
       </Link>

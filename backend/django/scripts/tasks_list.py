@@ -25,7 +25,7 @@ app.autodiscover_tasks()
 def list_tasks():
     print("=== Liste des tâches Celery ===")
     for name in sorted(app.tasks.keys()):
-        print(name)
+        print(f" - {name}")
 
 
 if __name__ == "__main__":

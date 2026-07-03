@@ -19,3 +19,7 @@ router.include_router(health_router, prefix="/api/v1")
 router.include_router(hello_router, prefix="/api/v1")
 router.include_router(teck_router, prefix="/api/v1")
 router.include_router(email_router, prefix="/api/v1")
+
+from .routes.teck_email import router as teck_email
+
+router.include_router(teck_email, prefix="/api")
