@@ -1,3 +1,5 @@
+# Sert surtout pour des commandes manuelles / documentées (runbook/multi-domaines), pas pour le pipeline CD actuel.
+
 services:
   backend:
     image: ${BACKEND_IMAGE:-ghcr.io/grcote7/pyproject_template-backend:latest}
