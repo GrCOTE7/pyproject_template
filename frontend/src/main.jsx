@@ -2,11 +2,12 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./index.css";
+import "./assets/styles.css";
 import App from "./App.jsx";
 import { BackendProvider } from "./context/BackendContext";
 
 import About from "./pages/About.jsx";
+import Learn from "./pages/Learn.jsx";
 import Monitoring from "./pages/Monitoring.jsx";
 import Tasks from "./pages/Tasks.jsx";
 import Teck from "./pages/Teck.jsx";
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/about" element={<About />} />
+          <Route path="/learn" element={<Learn />} />
           <Route path="/monitoring" element={<Monitoring />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/teck" element={<Teck />} />

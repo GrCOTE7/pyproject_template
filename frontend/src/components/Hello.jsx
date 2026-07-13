@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useBackendStatus } from "./context/BackendContext";
-import { authFetch } from "./auth";
+import { useBackendStatus } from "../context/BackendContext";
+import { authFetch } from "../auth";
 
 const HelloWorld = () => {
   const [message, setMessage] = useState("");

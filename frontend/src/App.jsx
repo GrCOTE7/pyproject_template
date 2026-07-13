@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import HelloWorld from "./Hello";
+import HelloWorld from "./components/Hello";
 import { useBackendStatus } from "./context/BackendContext";
 import {
   authFetch,
@@ -203,11 +203,13 @@ function App() {
             </button>
           </>
         )}
+
         {isAuthenticated ? (
           <div className="text-lg">
             <HelloWorld />
           </div>
         ) : null}
+
         <div className="mt-6">
           <Link
             to="/about"
@@ -216,9 +218,17 @@ function App() {
             About
           </Link>
 
+          {" | "}
+
+          <Link
+            to="/learn"
+            className="text-blue-600 hover:text-black underline"
+          >
+            Learn
+          </Link>
+
           {isAuthenticated && isAdmin && (
             <span className="mt-2">
-
               {" | "}
               <Link
                 to="/tasks"
@@ -238,17 +248,17 @@ function App() {
           )}
 
           {(window.location.hostname === "localhost" ||
-              window.location.hostname === "127.0.0.1") && (
-              <span className="mt-2">
-                {" | "}
-                <Link
-                  to="/monitoring"
-                  className="text-blue-700 hover:text-blue-800 underline"
-                >
-                  Monitoring
-                </Link>
-              </span>
-            )}
+            window.location.hostname === "127.0.0.1") && (
+            <span className="mt-2">
+              {" | "}
+              <Link
+                to="/monitoring"
+                className="text-blue-700 hover:text-blue-800 underline"
+              >
+                Monitoring
+              </Link>
+            </span>
+          )}
         </div>
         <hr className="my-4"></hr>
         <p className="text-sm text-slate-500 italic text-right">
