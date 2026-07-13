@@ -37,7 +37,8 @@ function About() {
           <h1 className="text-3xl font-bold text-blue-600 mb-4">Learn</h1>
           <p className="text-lg text-slate-600 font-bold">
             Page de test - Mode {localUse}<br />
-          {isLocalhost && "Localhost"}</p>
+          {isLocalhost && "(Localhost)"}
+          </p>
 
           <div className="mt-6">
             <AButtonWithoutAction />
