@@ -16,7 +16,16 @@ function About() {
     );
   }
 
-  const user = { firstname: "Alice", lastname: "Smith" };
+  const user = {
+    firstname: "Hedy",
+    lastname: "Lamarr",
+    imageUrl: "https://i.imgur.com/yXOvdOSs.jpg",
+    imageSize: 90,
+    get userFullNameTof() {
+      return `Photo de ${this.firstname} ${this.lastname}`;
+    },
+  };
+
 
   return (
     <>
@@ -30,9 +39,17 @@ function About() {
           </div>
 
           <div className="mt-6">
-            {user.firstname}
-            <br />
-            {user.lastname}
+            {user.userFullNameTof} :<br />
+            <img
+              className="avatar inline-block"
+              src={user.imageUrl}
+              alt={user.userFullNameTof}
+              title={user.userFullNameTof}
+              style={{
+                width: user.imageSize,
+                height: user.imageSize,
+              }}
+            />
           </div>
 
           <div className="mt-6">
