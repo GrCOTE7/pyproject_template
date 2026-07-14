@@ -42,8 +42,6 @@ function About() {
             Page de test - Mode {localUse}
             <br />
             {isLocalhost && "(Localhost)"}
-            <br />
-            <p>URL : {user.wikiLkTitle}</p>
           </p>
 
           <div className="mt-6">
