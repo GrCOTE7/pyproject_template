@@ -54,6 +54,6 @@ www.cote7.com {
 }
 
 gsm.cote7.com {
-    reverse_proxy localhost:7777
+    reverse_proxy gsm_caddy:7777
 }
 

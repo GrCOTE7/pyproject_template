@@ -18,9 +18,21 @@ export default defineConfig({
     exclude: ["e2e/**", "node_modules/**"],
   },
   server: {
-    host: true,
+    // `start.bat` expose PPT sur ce port. Le rendre explicite évite qu'un
+    // autre port soit choisi et que le client HMR tente de s'y reconnecter.
+    host: "0.0.0.0",
+    port: 5173,
+    strictPort: true,
+    hmr: {
+      protocol: "ws",
+      host: "localhost",
+      clientPort: 5173,
+    },
     watch: {
-      usePolling: true, // Crucial pour Windows + Docker
+      // La surveillance native est parfois manquée sous Windows ou dans le
+      // volume Docker. Le polling garantit la détection des modifications.
+      usePolling: true,
+      interval: 100,
     },
     proxy: {
       "/api": {

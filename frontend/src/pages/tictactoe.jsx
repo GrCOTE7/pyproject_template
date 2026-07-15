@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { setDocumentTitle } from "../utils/documentTitle";
 
+// Réf.: https://fr.react.dev/learn/tutorial-tic-tac-toe
+// * [ ] Autre façon de faire : https://fr.react.dev/learn/describing-the-ui
+
 function Tictactoe() {
   useEffect(() => {
     setDocumentTitle("Tic Tac Toe");
