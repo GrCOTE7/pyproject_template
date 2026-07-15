@@ -236,6 +236,15 @@ function App() {
             Learn 2
           </Link>
 
+          {" | "}
+
+          <Link
+            to="/tictactoe"
+            className="text-blue-600 hover:text-black underline"
+          >
+            Tic Tac Toe
+          </Link>
+
           {isAuthenticated && isAdmin && (
             <span className="mt-2">
               {" | "}
