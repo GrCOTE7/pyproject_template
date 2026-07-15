@@ -221,10 +221,19 @@ function App() {
           {" | "}
 
           <Link
-            to="/learn"
+            to="/learn1"
             className="text-blue-600 hover:text-black underline"
           >
-            Learn
+            Learn 1
+          </Link>
+
+          {" | "}
+
+          <Link
+            to="/learn2"
+            className="text-blue-600 hover:text-black underline"
+          >
+            Learn 2
           </Link>
 
           {isAuthenticated && isAdmin && (
