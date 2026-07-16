@@ -9,7 +9,7 @@ import { BackendProvider } from "./context/BackendContext";
 import About from "./pages/About.jsx";
 import Learn1 from "./pages/Learn1.jsx";
 import Learn2 from "./pages/Learn2.jsx";
-import TicTacToe from "./pages/TicTacToe.jsx";
+import TicTacToe from "./pages/Tictactoe.jsx";
 import Monitoring from "./pages/Monitoring.jsx";
 import Tasks from "./pages/Tasks.jsx";
 import Teck from "./pages/Teck.jsx";
