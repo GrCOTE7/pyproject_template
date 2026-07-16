@@ -66,4 +66,4 @@ function Learn2() {
   );
 }
 
-export default Learn2;
+export default Learn2

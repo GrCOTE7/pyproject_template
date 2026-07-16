@@ -30,4 +30,4 @@ function Tictactoe() {
   );
 }
 
-export default Tictactoe;
+export default Tictactoe
