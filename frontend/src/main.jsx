@@ -9,7 +9,7 @@ import { BackendProvider } from "./context/BackendContext";
 import About from "./pages/About.jsx";
 import Learn1 from "./pages/Learn1.jsx";
 import Learn2 from "./pages/Learn2.jsx";
-import TicTacToe from "./pages/Tictactoe.jsx";
+import Tictactoe from "./pages/Tictactoe.jsx";
 import Monitoring from "./pages/Monitoring.jsx";
 import Tasks from "./pages/Tasks.jsx";
 import Teck from "./pages/Teck.jsx";
@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/about" element={<About />} />
           <Route path="/learn1" element={<Learn1 />} />
           <Route path="/learn2" element={<Learn2 />} />
-          <Route path="/tictactoe" element={<TicTacToe />} />
+          <Route path="/tictactoe" element={<Tictactoe />} />
           <Route path="/monitoring" element={<Monitoring />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/teck" element={<Teck />} />
