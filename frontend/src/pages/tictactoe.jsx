@@ -5,7 +5,7 @@ import { setDocumentTitle } from "../utils/documentTitle";
 // Réf.: https://fr.react.dev/learn/tutorial-tic-tac-toe
 // * [ ] Autre façon de faire : https://fr.react.dev/learn/describing-the-ui
 
-function Tictactoe() {
+function TicTacToe() {
   useEffect(() => {
     setDocumentTitle("Tic Tac Toe");
   }, []);
@@ -30,4 +30,4 @@ function Tictactoe() {
   );
 }
 
-export default Tictactoe
+export default TicTacToe
