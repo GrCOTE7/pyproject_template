@@ -7,7 +7,7 @@ import { setDocumentTitle } from "../utils/documentTitle";
 
 function Tictactoe() {
   useEffect(() => {
-    setDocumentTitle("Tic Tac Toe 777");
+    setDocumentTitle("Tic Tac Toe");
   }, []);
 
   return (
