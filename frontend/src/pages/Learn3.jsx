@@ -139,7 +139,7 @@ export default function Learn3() {
   return (
     <main className="flex items-center justify-center min-h-screen bg-slate-50 text-slate-800 font-[Roboto]">
       <section className="border max-w-2xl w-full mx-6 p-8 text-center bg-white rounded-2xl shadow-2xl">
-        <h1 className="text-3xl font-bold text-blue-600 mb-4">Produits</h1>
+        <h1 className="text-3xl font-bold text-blue-600 mb-4">Learn3 - Produits</h1>
 
         <App />
 
