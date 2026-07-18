@@ -20,9 +20,9 @@ function stateReducer(state, action) {
 function CounterApp() {
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
+  const buttonClassName = "px-3 py-1 rounded-sm bg-gray-200";
   const addFive = () => dispatch({ type: "setCount", value: state.count + 5 });
   const reset = () => dispatch({ type: "reset" });
-  const buttonClassName = "px-3 py-1 rounded-sm bg-gray-200";
 
   return (
     <div>
