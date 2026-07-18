@@ -58,7 +58,7 @@ body {
 
 .square {
   background: #fff;
-  border: 2px solid #999;
+  border: 1px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -70,7 +70,6 @@ body {
   text-align: center;
   width: 34px;
   color: rgb(0, 60, 255);
-  border-radius: 4px;
 }
 
 .square.win {
@@ -86,7 +85,21 @@ body {
 
 .status {
   margin-bottom: 10px;
+  text-align: center;
 }
+
+article {
+  /* border: 1px solid blue; */
+  width: 150px;
+  font-weight: bold;
+  /* color:red; */
+}
+.board {
+  width: fit-content;
+  /* border: 1px solid red; */
+  margin: 0 auto;
+}
+
 .game {
   display: flex;
   flex-direction: row;
@@ -104,3 +117,8 @@ body {
   border-radius: 4px;
 }
 
+.move-index {
+  display: inline-block;
+  width: 2ch;
+  text-align: right;
+}

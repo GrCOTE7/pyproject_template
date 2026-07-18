@@ -60,25 +60,27 @@ function Board({ xIsNext, squares, onPlay }) {
   console.log("square:", squares);
   // Ci-dessous fctn fléchée {() => handleClick(0)} permet d'appeler la fonction au lieu de simplement la transmettre
   return (
-    <>
+    <article>
       <div className="status">{status}</div>
 
-      {[0, 1, 2].map((row) => (
-        <div key={row} className="board-row">
-          {[0, 1, 2].map((col) => {
-            const i = row * 3 + col;
-            return (
-              <Square
-                key={i}
-                value={squares[i]}
-                className={winningSquares.includes(i) ? "win" : ""}
-                onSquareClick={() => handleClick(i)}
-              />
-            );
-          })}
-        </div>
-      ))}
-    </>
+      <div className="board">
+        {[0, 1, 2].map((row) => (
+          <div key={row} className="board-row">
+            {[0, 1, 2].map((col) => {
+              const i = row * 3 + col;
+              return (
+                <Square
+                  key={i}
+                  value={squares[i]}
+                  className={winningSquares.includes(i) ? "win" : ""}
+                  onSquareClick={() => handleClick(i)}
+                />
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </article>
   );
 }
 
@@ -129,7 +131,7 @@ export default function TicTacToe() {
     }
     return (
       <li key={move}>
-        {move + 1}{" "}
+        <span className="move-index">{move + 1}</span>{" "}
         <button className="history" onClick={() => jumpTo(move)}>
           {description}
         </button>
