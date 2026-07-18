@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { setDocumentTitle } from "../utils/documentTitle";
+import { Link } from "react-router-dom";
 
 import "../assets/styles_tictactoe.css";
 
@@ -145,14 +146,25 @@ export default function TicTacToe() {
   }
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+    <>
+      <div className="game">
+        <div className="game-board">
+          <Board
+            xIsNext={xIsNext}
+            squares={currentSquares}
+            onPlay={handlePlay}
+          />
+        </div>
+        <div className="game-info">
+          {/* <ol>{[1, 2, 3].map((x) => x * 2).join(", ")}</ol> */}
+          <ol>{moves}</ol>
+        </div>
       </div>
-      <div className="game-info">
-        {/* <ol>{[1, 2, 3].map((x) => x * 2).join(", ")}</ol> */}
-        <ol>{moves}</ol>
-      </div>
-    </div>
+      <div className="mt-6 text-center">
+          <Link to="/" className="text-blue-600 hover:text-blue-500 underline">
+            Retour à l'accueil
+          </Link>
+        </div>
+    </>
   );
 }
