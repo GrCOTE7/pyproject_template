@@ -4,10 +4,19 @@ import { setDocumentTitle } from "../utils/documentTitle";
 
 // https://fr.react.dev/learn/typescript#typing-usereducer
 
-const initialState = { count: 0 };
+// Décrit la forme de l’état pour notre réducteur
+interface State {
+   count: number
+};
 
-// function stateReducer(state: State, action: CounterAction) {
-function stateReducer(state, action) {
+// Décrit les différentes actions susceptibles d’être dispatchées auprès du réducteur
+type CounterAction =
+  | { type: "reset" }
+  | { type: "setCount"; value: State["count"] }
+
+const initialState: State = { count: 0 };
+
+function stateReducer(state: State, action: CounterAction): State {
   switch (action.type) {
     case "reset":
       return initialState;
@@ -27,7 +36,7 @@ function CounterApp() {
 
   return (
     <div>
-      <h1>Bienvenue dans mon compteur</h1>
+      <h1>Compteur en tsx (TypeScript)</h1>
 
       <p>Compteur : {state.count}</p>
       <div className="mt-2 flex items-center justify-center gap-3">
@@ -42,16 +51,17 @@ function CounterApp() {
   );
 }
 
-export default function Learn4() {
+export default function Learn5() {
+  const subject = "Learn5 - useReducer";
   useEffect(() => {
-    setDocumentTitle("Learn 4 - useReducer");
+    setDocumentTitle(subject);
   }, []);
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-slate-50 text-slate-800 font-[Roboto]">
       <section className="border max-w-2xl w-full mx-6 p-8 text-center bg-white rounded-2xl shadow-2xl">
         <h1 className="text-3xl font-bold text-blue-600 mb-4">
-          Learn4 - useReducer
+          {subject}
         </h1>
 
         <CounterApp />

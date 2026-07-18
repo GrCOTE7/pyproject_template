@@ -12,6 +12,8 @@ import Learn2 from "./pages/Learn2.jsx";
 import TicTacToe from "./pages/TicTacToe.jsx";
 import Learn3 from "./pages/Learn3.jsx";
 import Learn4 from "./pages/Learn4.jsx";
+import Learn5 from "./pages/Learn5.tsx";
+import Learn6 from "./pages/Learn6.jsx";
 import Monitoring from "./pages/Monitoring.jsx";
 import Tasks from "./pages/Tasks.jsx";
 import Teck from "./pages/Teck.jsx";
@@ -29,6 +31,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="/tictactoe" element={<TicTacToe />} />
           <Route path="/learn3" element={<Learn3 />} />
           <Route path="/learn4" element={<Learn4 />} />
+          <Route path="/learn5" element={<Learn5 />} />
+          <Route path="/learn6" element={<Learn6 />} />
           <Route path="/monitoring" element={<Monitoring />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/teck" element={<Teck />} />
