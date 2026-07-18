@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { setDocumentTitle } from "../utils/documentTitle";
 
-// https://
+// https://fr.react.dev/learn/typescript#typing-usecontext
 
 export default function Learn6() {
-  const subject = "Learn6 - XXX";
+  const subject = "Learn6 - useContext";
   
   useEffect(() => {
     setDocumentTitle(subject);

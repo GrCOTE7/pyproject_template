@@ -14,8 +14,10 @@ type CounterAction =
   | { type: "reset" }
   | { type: "setCount"; value: State["count"] }
 
+// Fournit un type pour l’état initial, qui est aussi le type qu’utilisera useReducer par défaut.
 const initialState: State = { count: 0 };
 
+// Définit les types des arguments et de la valeur de retour pour la fonction de réduction
 function stateReducer(state: State, action: CounterAction): State {
   switch (action.type) {
     case "reset":
@@ -36,7 +38,7 @@ function CounterApp() {
 
   return (
     <div>
-      <h1>Compteur en tsx (TypeScript)</h1>
+      <h1>Compteur en <b>TSX</b> (TypeScript)</h1>
 
       <p>Compteur : {state.count}</p>
       <div className="mt-2 flex items-center justify-center gap-3">
