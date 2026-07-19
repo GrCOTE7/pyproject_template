@@ -281,6 +281,24 @@ function App() {
             Learn 6
           </Link>
 
+          {" | "}
+
+          <Link
+            to="/learn7"
+            className="text-blue-600 hover:text-black underline"
+          >
+            Learn 7
+          </Link>
+
+          {" | "}
+
+          <Link
+            to="/learn8"
+            className="text-blue-600 hover:text-black underline"
+          >
+            Learn 8
+          </Link>
+
           {isAuthenticated && isAdmin && (
             <span className="mt-2">
               {" | "}
